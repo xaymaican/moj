@@ -777,4 +777,4 @@ API.on(API.CHAT, function(data){
         });
     }, 3000);
  
-    API.sendChat("ZionScript v"+ZionBot.misc.version+ "Reporting for duty!")
+    API.sendChat("ZionScript v{"+ ZionBot.misc.version +"} Reporting for duty!")
