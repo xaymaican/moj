@@ -453,21 +453,7 @@ botMethods.djAdvanceEvent = function(data){
                         }
                         break;
                
-                    case "commands":
-                        if(typeof command[1] == "undefined"){
-                            API.sendChat("My commands can be found here: http://goo.gl/rzCrcL");
-                        }else if(command[1].indexOf("@") > -1){
-                            API.sendChat(command[1]+" My commands can be found here: http://goo.gl/rzCrcL");
-                        }else{
-                            API.sendChat("My commands can be found here: http://goo.gl/rzCrcL");
-                        }
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ mubBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
- 
-                   case "wiki":
+                    case "wiki":
                         if(typeof command[1] == "undefined"){
                             API.sendChat("@"+data.from+" https://en.wikipedia.org/wiki/Special:Random");
                         }else{
