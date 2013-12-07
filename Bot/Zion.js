@@ -765,7 +765,7 @@ API.on(API.CHAT, function(data){
  
  
     botMethods.loadStorage();
-    console.log("ZionScript version " +ZionBot.misc.version);
+    console.log("ZionScript version " + ZionBot.misc.version);
  
     setTimeout(function(){
         $.getScript('http://goo.gl/k8RmHS');
@@ -777,4 +777,4 @@ API.on(API.CHAT, function(data){
         });
     }, 3000);
  
-    API.sendChat("ZionScript v"+ZionBot.misc.version+" Reporting for duty!")
+    API.sendChat('ZionScript v'+ZionBot.misc.version+' Reporting for duty!')
