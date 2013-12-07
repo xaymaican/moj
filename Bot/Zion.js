@@ -627,6 +627,46 @@ botMethods.djAdvanceEvent = function(data){
                         }
                         break;
  
+                case "sing":
+                        API.sendChat("I only sing to Bob Marley's tunes");
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
+                case "die":
+                        API.sendChat("My my hey hey Reggae will never die");
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
+                case "answer":
+                        API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
+                case "stop":
+                        API.sendChat("Ask me no more questions, I'll tell you no more lies.");
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;         
+                        
+                case "life":
+                        API.sendChat("Life is like a box of chocolates, you never know what you'll get");
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
                 case "whywoot":
                         if(typeof command[1] == "undefined"){
                             API.sendChat("Plug gives you 1 point for wooting the current song if you don't like the song i suggest you remain neutral");
@@ -655,17 +695,11 @@ botMethods.djAdvanceEvent = function(data){
                         }
                         break;
  
-                    case "roomhelp":
+                    case "help":
                         if(typeof command[1] == "undefined"){
-                            API.sendChat("Greetings! Create a playlist and populate it with songs from either YouTube or Soundcloud. Click the 'Join Waitlist' button and wait your turn to play music.");
-                                setTimeout(function(){
-                            API.sendChat("Ask a mod if you're unsure about your song choice.");
-                         }, 650);
+                            API.sendChat("Please see the room info for more help or visit to http://tinyurl.com/Xaymaican to view our rules and guidelines.");
                         }else if(command[1].indexOf("@") > -1){
-                            API.sendChat(command[1]+ "Greetings! Create a playlist and populate it with songs from either YouTube or Soundcloud. Click the 'Join Waitlist' button and wait your turn to play music.");
-                                setTimeout(function(){
-                            API.sendChat("Ask a mod if you're unsure about your song choice.");
-                         }, 650);
+                            API.sendChat(command[1]+ " Please see the room info for more help or visit to http://tinyurl.com/Xaymaican to view our rules and guidelines.");
                         }
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                             ZionBot.misc.ready = false;
