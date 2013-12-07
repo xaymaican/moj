@@ -1323,14 +1323,14 @@ botMethods.djAdvanceEvent = function(data){
                 }
             }
             if(msg.indexOf('cheer') > -1){
-                API.sendChat("Chune!!!");
+                API.sendChat('Chune!!!');
                 if(mubBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                     mubBot.misc.ready = false;
                     setTimeout(function(){ mubBot.misc.ready = true; }, mubBot.settings.cooldown * 1000);
                 }
             }
             if(msg.indexOf('smile') > -1){
-                API.sendChat("Great music always makes me smile!";
+                API.sendChat("Great music always makes me smile!");
                 if(mubBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                     mubBot.misc.ready = false;
                     setTimeout(function(){ mubBot.misc.ready = true; }, mubBot.settings.cooldown * 1000);
