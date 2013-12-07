@@ -49,7 +49,7 @@ toSave = {};
 toSave.settings = ZionBot.settings;
 toSave.moderators = ZionBot.moderators;
  
-ZionBot.misc.version = "1.0.7";
+ZionBot.misc.version = "1.0.9";
 ZionBot.misc.origin = "This bot was created by xay and Neon alone, and it is copyrighted!";
 ZionBot.misc.changelog = "Added a secondary check for history";
 ZionBot.misc.ready = true;
@@ -1314,26 +1314,26 @@ botMethods.djAdvanceEvent = function(data){
     
     API.on(API.CHAT, function(data){
         msg = data.message.toLowerCase(), chatID = data.chatID, fromID = data.fromID;
-        if(mubBot.misc.ready || mubBot.admins.indexOf(fromID) > -1 ||API.getUser(fromID).permission > 1){
+        if(ZionBot.misc.ready || ZionBot.admins.indexOf(fromID) > -1 ||API.getUser(fromID).permission > 1){
             if(msg.indexOf('swear') > -1){
                 API.sendChat("Ooh so you think you're tough swearing at me?");
-                if(mubBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                    mubBot.misc.ready = false;
-                    setTimeout(function(){ mubBot.misc.ready = true; }, mubBot.settings.cooldown * 1000);
+                if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                    ZionBot.misc.ready = false;
+                    setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                 }
             }
             if(msg.indexOf('cheer') > -1){
                 API.sendChat('Chune!!!');
-                if(mubBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                    mubBot.misc.ready = false;
-                    setTimeout(function(){ mubBot.misc.ready = true; }, mubBot.settings.cooldown * 1000);
+                if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                    ZionBot.misc.ready = false;
+                    setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                 }
             }
             if(msg.indexOf('smile') > -1){
                 API.sendChat("Great music always makes me smile!");
-                if(mubBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                    mubBot.misc.ready = false;
-                    setTimeout(function(){ mubBot.misc.ready = true; }, mubBot.settings.cooldown * 1000);
+                if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                    ZionBot.misc.ready = false;
+                    setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                 }
             }
         }
