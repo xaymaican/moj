@@ -43,7 +43,7 @@ ZionBot.settings = {};
 ZionBot.moderators = {};
 ZionBot.filters = {};
 botMethods = {};
-mubBot.pubVars = {};
+ZionBot.pubVars = {};
  
 toSave = {};
 toSave.settings = ZionBot.settings;
