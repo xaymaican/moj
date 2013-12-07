@@ -49,7 +49,7 @@ toSave = {};
 toSave.settings = ZionBot.settings;
 toSave.moderators = ZionBot.moderators;
  
-ZionBot.misc.version = "2.0.59";
+ZionBot.misc.version = "1.0.7";
 ZionBot.misc.origin = "This bot was created by xay and Neon alone, and it is copyrighted!";
 ZionBot.misc.changelog = "Added a secondary check for history";
 ZionBot.misc.ready = true;
@@ -90,9 +90,7 @@ ZionBot.filters.racistWords = ["nigger","kike","spick","porchmonkey","camel jock
  
 ZionBot.filters.beggerWords = ["fanme","fan me","fan4fan","fan 4 fan","fan pls","fans please","need fan","more fan","fan back","give me fans","gimme fans"];
  
-//fun commands misc below
- 
-ZionBot.misc.tacos = ["blunt","kush","Chemo","Locoweed","marijuana","Ganja"];
+//Fun commands misc below
  
 ZionBot.misc.cookie = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
  
@@ -873,52 +871,7 @@ botMethods.djAdvanceEvent = function(data){
             if(ZionBot.misc.ready || ZionBot.admins.indexOf(fromID) > -1 ||API.getUser(fromID).permission > 1){
                 switch(command[0].toLowerCase()){
  
-                   case "weed":
-                        if(typeof command[1] == "@"){
-                            var crowd = API.getUsers();
-                            var randomUser = Math.floor(Math.random() * crowd.length);
-                            var randomTaco = Math.floor(Math.random() * ZionBot.misc.tacos.length);
-                            var randomSentence = Math.floor(Math.random() * 3);
-                            switch(randomSentence){
-                                case 0:
-                                    API.sendChat("@" + crowd[randomUser].username + ", take this " + ZionBot.misc.tacos[randomTaco] + ", you bum!");
-                                    break;
-                                case 1:
-                                    API.sendChat("@" + crowd[randomUser].username + ", quickly! Smoke this " + ZionBot.misc.tacos[randomTaco] + " before I do!");
-                                    break;
-                                case 2:
-                                    API.sendChat("One free " + ZionBot.misc.tacos[randomTaco] + " for you, @" + crowd[randomUser].username + ".");
-                                    break;
-                                case 3:
-                                    API.sendChat("/me throws a " + ZionBot.misc.tacos[randomTaco] + " at @" + crowd[randomUser].username + "!");
-                                    break;
-                            }
-                        }else{
-                            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-                            var randomTaco = Math.floor(Math.random() * ZionBot.misc.tacos.length);
-                            var randomSentence = Math.floor(Math.random() * 3);
-                            switch(randomSentence){
-                                case 0:
-                                    API.sendChat("@" + botMethods.cleanString(command[1]) + ", take this " + ZionBot.misc.tacos[randomTaco] + ", you bum!");
-                                    break;
-                                case 1:
-                                    API.sendChat("@" + botMethods.cleanString(command[1]) + ", quickly! Smoke this " + ZionBot.misc.tacos[randomTaco] + " before I do!");
-                                    break;
-                                case 2:
-                                    API.sendChat("One free " + ZionBot.misc.tacos[randomTaco] + " for you, @" + botMethods.cleanString(command[1]) + ".");
-                                    break;
-                                case 3:
-                                    API.sendChat("/me throws a " + ZionBot.misc.tacos[randomTaco] + " at @" + botMethods.cleanString(command[1]) + "!");
-                                    break;
-                            }
-                        }
-                        if(ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
-                       
-                    case "hug":
+                   case "hug":
                         if(typeof command[1] == "@"){
                             var crowd = API.getUsers();
                             var randomUser = Math.floor(Math.random() * crowd.length);
