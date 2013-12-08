@@ -1311,13 +1311,13 @@ botMethods.djAdvanceEvent = function(data){
     API.on(API.CHAT, function(data){
         msg = data.message.toLowerCase(), chatID = data.chatID;
  
-        for(var i = 0; i < mubBot.filters.swearWords.length; i++){
-            if(msg.indexOf(mubBot.filters.swearWords[i].toLowerCase()) > -1 && mubBot.settings.swearFilter){
+        for(var i = 0; i < ZionBot.filters.swearWords.length; i++){
+            if(msg.indexOf(ZionBot.filters.swearWords[i].toLowerCase()) > -1 && ZionBot.settings.swearFilter){
                 API.moderateDeleteChat(chatID);
             }
         }
-        for(var i = 0; i < mubBot.filters.commandWords.length; i++){
-            if(msg.indexOf(mubBot.filters.commandWords[i].toLowerCase()) > -1 && mubBot.settings.commandFilter){
+        for(var i = 0; i < ZionBot.filters.commandWords.length; i++){
+            if(msg.indexOf(ZionBot.filters.commandWords[i].toLowerCase()) > -1 && ZionBot.settings.commandFilter){
                 API.moderateDeleteChat(chatID);
             }
         }
