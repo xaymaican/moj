@@ -4,6 +4,8 @@ Zoin Bot
 The Music Of Jamaica
 
 
+### Whats does the bot do? ###
+
 - Checks history
 - Mod commands and User commands (Admins included)
 - Spams chat (If UnAthorized User is using this script)
@@ -29,7 +31,6 @@ The Music Of Jamaica
 - Skips the current dj
 - unlocks booth
 - dogfacts and catfacts
-- 
 
 
 
