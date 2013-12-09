@@ -15,16 +15,16 @@
    from a version used in the original software
  
  
-TERMS OF REPRODUCTION USE
+ TERMS OF REPRODUCTION USE
  
-Failure to follow these terms will result in me getting very angry at you
-and having your software tweaked or removed if possible. Either way, you're
-still an idiot for not following such a basic rule.
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHORS DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE
-INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS
-BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ Failure to follow these terms will result in me getting very angry at you
+ and having your software tweaked or removed if possible. Either way, you're
+ still an idiot for not following such a basic rule.
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHORS DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE
+ INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS
+ BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
+ RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  
  
  * NOTE:  PLEASE CONTACT DJ-NEON FOR THIS SCRIPT (DO NOT CHANGE ANYTHING ON THIS SCRIPT OR USE THIS SCRIPT WHICH
@@ -1324,34 +1324,14 @@ botMethods.djAdvanceEvent = function(data){
         
     });
     
-    
-    
     API.on(API.CHAT, function(data){
-        msg = data.message.toLowerCase(), chatID = data.chatID, fromID = data.fromID;
-        if(ZionBot.misc.ready || ZionBot.admins.indexOf(fromID) > -1 ||API.getUser(fromID).permission > 1){
-            if(msg.indexOf('swear') > -1){
-                API.sendChat("Ooh so you think you're tough swearing at me?");
-                if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                    ZionBot.misc.ready = false;
-                    setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                }
-            }
-            if(msg.indexOf('cheer') > -1){
-                API.sendChat('Chune!!!');
-                if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                    ZionBot.misc.ready = false;
-                    setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                }
-            }
-            if(msg.indexOf('smile') > -1){
-                API.sendChat("Great music always makes me smile!");
-                if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                    ZionBot.misc.ready = false;
-                    setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                }
-            }
+        if(data.message.indexOf('cheer') === 0){
+         API.sendChat('Chune!!!');
+         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+            ZionBot.misc.ready = false;
+            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+           }
         }
- 
     });
  
         
