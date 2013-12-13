@@ -49,7 +49,7 @@ toSave = {};
 toSave.settings = ZionBot.settings;
 toSave.moderators = ZionBot.moderators;
  
-ZionBot.misc.version = "1.0.9";
+ZionBot.misc.version = "1.0.15";
 ZionBot.misc.origin = "This bot was created by xay and Neon alone, and it is copyrighted!";
 ZionBot.misc.changelog = "Added a secondary check for history";
 ZionBot.misc.ready = true;
@@ -774,7 +774,7 @@ botMethods.djAdvanceEvent = function(data){
                         break;
  
                     case "version":
-                        API.sendChat("HipHop-Script version " + ZionBot.misc.version);
+                        API.sendChat("Zion Script version " + ZionBot.misc.version);
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
@@ -1334,9 +1334,9 @@ botMethods.djAdvanceEvent = function(data){
     });
     
     API.on(API.CHAT, function(data){
+        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
         if(data.message.indexOf('cheer') === 0){
          API.sendChat('Chune!!!');
-         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
