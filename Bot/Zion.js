@@ -560,7 +560,7 @@ botMethods.djAdvanceEvent = function(data){
                         if(typeof command[1] === "undefined"){
                            API.sendChat(".{command} mention is included");
                         setTimeout(function(){
-                           API.sendChat("cookie | flipcoin | catfact | dogfact | hug | weed | 8ball | fortune | roomhelp | whywoot | whywoot | props | votes | woot | meh");
+                           API.sendChat("props");
                         }, 650);
                       }
                     }
@@ -625,48 +625,48 @@ botMethods.djAdvanceEvent = function(data){
                         break;
  
                 case "votes":
-                        API.sendChat("Users vote:  :+1: " + API.getRoomScore().positive + " | :-1: " + API.getRoomScore().negative + " | :purple_heart: " + API.getRoomScore().curates);
                         if(API.getUser(fromID).permission < 2 || ZionBot.admins.indexOf(fromID) > -1){
+                            API.sendChat("Users vote:  :+1: " + API.getRoomScore().positive + " | :-1: " + API.getRoomScore().negative + " | :purple_heart: " + API.getRoomScore().curates);
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
  
                 case "sing":
-                        API.sendChat("I only sing to Bob Marley's tunes");
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                          API.sendChat("I only sing to Bob Marley's tunes");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
                         
                 case "die":
-                        API.sendChat("My my hey hey Reggae will never die");
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                         API.sendChat("My my hey hey Reggae will never die");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
                         
                 case "answer":
-                        API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                          API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
                         
                 case "stop":
-                        API.sendChat("Ask me no more questions, I'll tell you no more lies.");
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                           API.sendChat("Ask me no more questions, I'll tell you no more lies.");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;         
                         
                 case "life":
-                        API.sendChat("Life is like a box of chocolates, you never know what you'll get");
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                          API.sendChat("Life is like a box of chocolates, you never know what you'll get");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
