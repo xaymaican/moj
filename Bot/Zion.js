@@ -387,42 +387,52 @@ botMethods.djAdvanceEvent = function(data){
             }
             if(ZionBot.misc.ready || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(data.fromID).permission > 1){
                 switch(command[0].toLowerCase()){
- 
-                    case "votes":
+                 
+                 
+                    case "commands":
                         API.sendChat("Users vote:  :+1: " + API.getRoomScore().positive + " | :-1: " + API.getRoomScore().negative + " | :purple_heart: " + API.getRoomScore().curates);
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                           API.sendChat("rules | theme | wiki | link | define | songlink | download | props | votes | currentdj | bot | ping | marco | join | leave | woot | meh");
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+ 
+                    case "votes":
+                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                          API.sendChat("Users vote:  :+1: " + API.getRoomScore().positive + " | :-1: " + API.getRoomScore().negative + " | :purple_heart: " + API.getRoomScore().curates);
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
                
                     case "currentdj":
-                        API.sendChat("Current dj is: "+ API.getDJ().username);
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                          API.sendChat("Current dj is: "+ API.getDJ().username);
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
  
                     case "bot":
-                        API.sendChat("What faggot? @"+ data.from);
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                          API.sendChat("What faggot? @"+ data.from);
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
  
                     case "ping":
-                        API.sendChat("@"+ data.from +" Pong!");
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
+                            API.sendChat("@"+ data.from +" Pong!");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
  
                     case "marco":
-                        API.sendChat("@"+ data.from +" POLO!");
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
+                            API.sendChat("@"+ data.from +" POLO!");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
@@ -554,17 +564,6 @@ botMethods.djAdvanceEvent = function(data){
             }
             if(ZionBot.misc.ready || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(data.fromID).permission > 1){
                 switch(command[0].toLowerCase()){
- 
-                case "commands":
-                        if(API.getUser(fromID).permission < 2 || ZionBot.admins.indexOf(fromID) > -1){
-                        if(typeof command[1] === "undefined"){
-                           API.sendChat(".{command} mention is included");
-                        setTimeout(function(){
-                           API.sendChat("rules | theme | wiki | link | define | songlink | download | props | votes | currentdj | bot | ping | marco | join | leave | woot | meh");
-                        }, 650);
-                      }
-                    }
-                        break;
  
                 case "props":
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
