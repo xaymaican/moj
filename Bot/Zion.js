@@ -560,7 +560,7 @@ botMethods.djAdvanceEvent = function(data){
                         if(typeof command[1] === "undefined"){
                            API.sendChat(".{command} mention is included");
                         setTimeout(function(){
-                           API.sendChat("props");
+                           API.sendChat("rules | theme | wiki | link | define | songlink | download | props | votes | currentdj | bot | ping | marco | join | leave | woot | meh");
                         }, 650);
                       }
                     }
