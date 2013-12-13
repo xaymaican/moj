@@ -37,6 +37,7 @@
  
  
 var ZionBot = {};
+var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
 var ruleSkip = {};
 ZionBot.misc = {};
 ZionBot.settings = {};
@@ -405,9 +406,9 @@ botMethods.djAdvanceEvent = function(data){
                         }
                         break;
                
-                    case "currentdj":
+                    case "djinfo":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
-                          API.sendChat("Current dj is: "+ API.getDJ().username);
+                          API.sendChat("Current dj is: "+ API.getDJ().username +". Points: "+ total +" | Fans: "+API.getDJ().fans+" | Curated: "+ API.getDJ().curatorPoints +".");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
