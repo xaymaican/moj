@@ -279,6 +279,15 @@ function UserJoin(user)
 API.sendChat("Welcome @"+ user.username +" to The Music Of Jamaica Room, the music you play should be of Jamaican origin");
 }
 
+API.on(API.DJ_ADVANCE, DJ);
+function DJ(obj) {
+  if (obj == null) return;
+  var str = "";
+  var currentDJ = obj.dj;
+  str += currentDJ.username;
+  str += " Is now playing: " + obj.media.author + " - " + obj.media.title;
+  API.sendChat(str);
+}
  
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.djAdvanceEvent(data); }, 500);
