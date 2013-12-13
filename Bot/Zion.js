@@ -390,7 +390,6 @@ botMethods.djAdvanceEvent = function(data){
                  
                  
                     case "commands":
-                        API.sendChat("Users vote:  :+1: " + API.getRoomScore().positive + " | :-1: " + API.getRoomScore().negative + " | :purple_heart: " + API.getRoomScore().curates);
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                            API.sendChat("rules | theme | wiki | link | define | songlink | download | props | votes | currentdj | bot | ping | marco | join | leave | woot | meh");
                             ZionBot.misc.ready = false;
