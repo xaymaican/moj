@@ -37,7 +37,6 @@
  
  
 var ZionBot = {};
-var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
 var ruleSkip = {};
 ZionBot.misc = {};
 ZionBot.settings = {};
@@ -277,7 +276,11 @@ API.on(API.DJ_ADVANCE, djAdvanceEvent);
 API.on(API.USER_JOIN, UserJoin);
 function UserJoin(user)
 {
-API.sendChat("Welcome @"+ user.username +" to The Music Of Jamaica Room, the music you play should be of Jamaican origin");
+var msg, r, responses;
+msg = chat.message.toLowerCase();
+responses = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
+r = Math.floor(Math.random() * responses.length);
+API.sendChat(responses[r].replace("{user}", user.username));
 }
 
 API.on(API.DJ_ADVANCE, DJ);
@@ -365,7 +368,7 @@ botMethods.djAdvanceEvent = function(data){
                 //API.sendChat("@"+ API.getDJ().username +" You have now played for as long as this room allows, time to let someone else have the booth!");
                 //API.moderateForceSkip();
             }, ZionBot.settings.maxLength * 60000);
-            API.sendChat("@"+ API.getDJ().username +" This song will be skipped " + ZionBot.settings.maxLength + " minutes from now because it exceeds the max song length.");
+                //API.sendChat("@"+ API.getDJ().username +" This song will be skipped " + ZionBot.settings.maxLength + " minutes from now because it exceeds the max song length.");
         }else{
             setTimeout(function(){
                 if(botMethods.checkHistory() > 0 && ZionBot.settings.historyFilter){
