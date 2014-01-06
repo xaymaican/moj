@@ -293,7 +293,7 @@ function DJ(obj) {
 
 API.on(API.VOTE_UPDATE, Meh);
 function Meh(obj) {
-var vote = obj.vote == 1 ? "meh";
+var vote = obj.vote == "meh";
 MehRsp = ["Oh dear, @{user} has lamed, which is clearly not allowed. This will all end in tears. :sob:","@{user} lamed this song. Doesn't that mean I can boot this lamer?","@{user}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
 r = Math.floor(Math.random() * responses.length);
 API.sendChat(MehRsp[r].replace("{user}", obj.user.username));
