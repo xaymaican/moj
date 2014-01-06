@@ -277,7 +277,7 @@ API.on(API.USER_JOIN, UserJoin);
 function UserJoin(user)
 {
 var msg, r, responses;
-msg = data.message.toLowerCase();
+msg = user.message.toLowerCase();
 responses = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
 r = Math.floor(Math.random() * responses.length);
 API.sendChat(responses[r].replace("{user}", user.username));
