@@ -447,11 +447,11 @@ botMethods.djAdvanceEvent = function(data){
  
                     case "rules":
                         if(typeof command[1] == "undefined"){
-                            API.sendChat("");
+                            API.sendChat("Please visit here to see the room's rule: http://moj.neocities.org/");
                         }else if(command[1].indexOf("@") > -1){
-                            API.sendChat(command[1]+"");
+                            API.sendChat(command[1]+" Please visit here to see the room's rule: http://moj.neocities.org/");
                         }else{
-                            API.sendChat("");
+                            API.sendChat("Please visit here to see the room's rule: http://moj.neocities.org/");
                         }
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                             ZionBot.misc.ready = false;
@@ -461,11 +461,11 @@ botMethods.djAdvanceEvent = function(data){
  
                     case "theme":
                         if(typeof command[1] == "undefined"){
-                            API.sendChat("");
+                            API.sendChat("The music you play should be of Jamaican origin");
                         }else if(command[1].indexOf("@") > -1){
-                            API.sendChat(command[1]+"");
+                            API.sendChat(command[1]+" The music you play should be of Jamaican origin");
                         }else{
-                            API.sendChat("");
+                            API.sendChat("The music you play should be of Jamaican origin");
                         }
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                             ZionBot.misc.ready = false;
@@ -1309,48 +1309,42 @@ botMethods.djAdvanceEvent = function(data){
     
     API.on(API.CHAT, function(data){
         var msg = data.message, from = data.from, fromID = data.fromID;
-        if(API.getUser(fromID).permission < 2){
         if(data.message.indexOf('cheer') === 0){
          API.sendChat('Chune!!!');
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         }
-        if(API.getUser(fromID).permission < 2){
         if(data.message.indexOf("sing") === 0){
          API.sendChat("I only sing to Bob Marley's tunes");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        }
-        if(API.getUser(fromID).permission < 2){
+        
         if(data.message.indexOf("die") === 0){
          API.sendChat("My my hey hey Reggae will never die");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        }
-        if(API.getUser(fromID).permission < 2){
+        
         if(data.message.indexOf("answer") === 0){
          API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        }
-        if(API.getUser(fromID).permission < 2){
+        
         if(data.message.indexOf("stop") === 0){
          API.sendChat("Ask me no more questions, I'll tell you no more lies.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        }
-        if(API.getUser(fromID).permission < 2){
+        
         if(data.message.indexOf("life") === 0){
          API.sendChat("Life is like a box of chocolates, you never know what you'll get");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        }
+        
     });
     
     
