@@ -86,8 +86,7 @@ ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch
  
 ZionBot.filters.commandWords = ["!say","!catfact","!dogfact","!fortune","!songlink","!commands","!down","!join","!woot","!meh","!status","!tcf","!cf","!rules"];
  
-//Fun commands misc below
- 
+
 ZionBot.misc.cookie = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
  
 ZionBot.misc.ball = [
@@ -294,7 +293,7 @@ function DJ(obj) {
 API.on(API.VOTE_UPDATE, Meh);
 function Meh(obj) {
 MehRsp = ["Oh dear, @{user} has lamed, which is clearly not allowed. This will all end in tears. :sob:","@{user} lamed this song. Doesn't that mean I can boot this lamer?","@{user}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
-r = Math.floor(Math.random() * responses.length);
+r = Math.floor(Math.random() * MehRsp.length);
 API.sendChat(MehRsp[r].replace("{user}", obj.user.username));
 }
 
