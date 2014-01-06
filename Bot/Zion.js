@@ -574,17 +574,19 @@ botMethods.djAdvanceEvent = function(data){
                         break;
                         
                 case "add":
-                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
-                         if(typeof command[1] === "undefined"){
-                           Var AddMsg = ["Now Adding this awesome song!","Jah!","Now Adding this song.."];
+                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                        if(typeof command[1] === "undefined"){
+                         var AddMsg = ["Now Adding this song!","Jah!"];
                            API.sendChat(AddMsg[Math.floor(Math.random() * AddMsg.length)]);
-                         setTimeout(function(){
+                        setTimeout(function(){
                            $(".icon-curate").click();
                            $($(".curate").children(".menu").children().children()[0]).mousedown();
-                         }, 650);
+                        }, 650);
+                        }else {
+                           API.sendChat("This command requires bouncer +");
                         }
-                       }
-                       break;
+                    }
+                        break;
                        
                 case "woot":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
