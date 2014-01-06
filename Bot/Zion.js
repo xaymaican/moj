@@ -274,13 +274,15 @@ Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.l
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
  
 API.on(API.USER_JOIN, UserJoin);
-function UserJoin(user)
-{
+function UserJoin(user){
+function UserJoin(data){
+
 var msg, r, responses;
-msg = user.message.toLowerCase();
+msg = data.message.toLowerCase();
 responses = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
 r = Math.floor(Math.random() * responses.length);
 API.sendChat(responses[r].replace("{user}", user.username));
+}
 }
 
 API.on(API.DJ_ADVANCE, DJ);
