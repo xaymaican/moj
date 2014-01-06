@@ -290,7 +290,15 @@ function DJ(obj) {
   str += " Is now playing: " + obj.media.author + " - " + obj.media.title;
   API.sendChat(str);
 }
- 
+
+API.on(API.VOTE_UPDATE, callback);
+function callback(obj) {
+var vote = obj.vote == 1 ? "meh";
+["Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:","@{0} lamed this song. Doesn't that mean I can boot this lamer?","@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
+r = Math.floor(Math.random() * responses.length);
+API.sendChat(responses[r].replace("{0}", obj.user.username));
+}
+
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.djAdvanceEvent(data); }, 500);
 }
