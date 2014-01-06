@@ -290,15 +290,6 @@ function DJ(obj) {
   API.sendChat(str);
 }
 
-API.on(API.VOTE_UPDATE, Meh);
-function Meh(obj) {
-MehRsp = ["Oh dear, @{user} has lamed, which is clearly not allowed. This will all end in tears. :sob:","@{user} lamed this song. Doesn't that mean I can boot this lamer?","@{user}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
-r = Math.floor(Math.random() * MehRsp.length);
-if(obj.vote == "meh"){
-API.sendChat(MehRsp[r].replace("{user}", obj.user.username));
-}
-}
-
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.djAdvanceEvent(data); }, 500);
 }
@@ -581,15 +572,20 @@ botMethods.djAdvanceEvent = function(data){
                         }
                     }
                         break;
- 
-                case "whoami":
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                        if(typeof command[1] === "undefined"){
-                           API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
+                        
+                case "add":
+                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                         if(typeof command[1] === "undefined"){
+                           Var AddMsg = ["Now Adding this awesome song!","Jah!","Now Adding this song.."];
+                           API.sendChat(AddMsg[Math.floor(Math.random() * AddMsg.length)]);
+                         setTimeout(function(){
+                           $(".icon-curate").click();
+                           $($(".curate").children(".menu").children().children()[0]).mousedown();
+                         }, 650);
                         }
-                    }
-                        break;
- 
+                       }
+                       break;
+                       
                 case "woot":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                         if(typeof command[1] === "undefined"){
