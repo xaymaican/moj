@@ -1308,30 +1308,35 @@ botMethods.djAdvanceEvent = function(data){
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         }
+        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
         if(data.message.indexOf("sing") === 0){
          API.sendChat("I only sing to Bob Marley's tunes");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         }
+        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
         if(data.message.indexOf("die") === 0){
          API.sendChat("My my hey hey Reggae will never die");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         }
+        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
         if(data.message.indexOf("answer") === 0){
          API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         }
+        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
         if(data.message.indexOf("stop") === 0){
          API.sendChat("Ask me no more questions, I'll tell you no more lies.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         }
+        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
         if(data.message.indexOf("life") === 0){
          API.sendChat("Life is like a box of chocolates, you never know what you'll get");
             ZionBot.misc.ready = false;
