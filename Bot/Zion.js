@@ -291,9 +291,9 @@ function DJ(obj) {
   API.sendChat(str);
 }
 
-API.on(API.VOTE_UPDATE, callback);
-function callback(obj) {
-var vote = obj.vote == 1 ? "meh";
+API.on(API.VOTE_UPDATE, Meh);
+function Meh(obj) {
+var vote = obj.vote == 1 ? "woot" : "meh";
 ["Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:","@{0} lamed this song. Doesn't that mean I can boot this lamer?","@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
 r = Math.floor(Math.random() * responses.length);
 API.sendChat(responses[r].replace("{0}", obj.user.username));
