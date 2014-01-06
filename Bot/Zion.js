@@ -576,7 +576,7 @@ botMethods.djAdvanceEvent = function(data){
                 case "add":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                         if(typeof command[1] === "undefined"){
-                         var AddMsg = ["Now Adding this song!","Jah!"];
+                         var AddMsg = ["Now Adding this song!","Jah!","Now snagging this song!"];
                            API.sendChat(AddMsg[Math.floor(Math.random() * AddMsg.length)]);
                         setTimeout(function(){
                            $(".icon-curate").click();
