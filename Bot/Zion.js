@@ -275,9 +275,16 @@ API.on(API.DJ_ADVANCE, djAdvanceEvent);
 API.on(API.USER_JOIN, UserJoin);
 function UserJoin(user)
 {
-responses = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
-r = Math.floor(Math.random() * responses.length);
-API.sendChat(responses[r].replace("{user}", user.username));
+JoinMsg = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
+r = Math.floor(Math.random() * JoinMsg.length);
+API.sendChat(JoinMsg[r].replace("{user}", user.username));
+}
+
+API.on(API.USER_LEAVE, Leave);
+function Leave(user) {
+LeaveMsg = ["Thanks for stopping by, {user} Stay a little longer next time!","Oh, don't leave, {user} My life will be a lot emptier without you in it!","Nice of you to visit us, {user} Thanks for stealing all the beer before you left!"];
+r = Math.floor(Math.random() * LeaveMsg.length);
+API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
 API.on(API.DJ_ADVANCE, DJ);
@@ -576,7 +583,7 @@ botMethods.djAdvanceEvent = function(data){
                 case "add":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                         if(typeof command[1] === "undefined"){
-                         var AddMsg = ["Now Adding this song!","Jah!","Now snagging this song!"];
+                         var AddMsg = ["Now Adding this song!","Yoink!","Now snagging this song!"];
                            API.sendChat(AddMsg[Math.floor(Math.random() * AddMsg.length)]);
                         setTimeout(function(){
                            $(".icon-curate").click();
@@ -591,7 +598,8 @@ botMethods.djAdvanceEvent = function(data){
                 case "woot":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                         if(typeof command[1] === "undefined"){
-                           API.sendChat("One woot coming up!");
+                         var WootMsg = ['chune','skank', 'wub', 'w00b', 'headbang', 'breakdance', 'flashdance', 'bravo', 'roboboogie', 'disco', 'lambada', 'grind', 'getdown', 'get_down', 'barrelroll', 'tapdance','rock', 'doabarrelroll', 'boogie', 'shake', 'shakeit', 'bob', 'bop', 'dance','bounce','swing','rave',':metal:',':+1:',':thumbsup:','groove',':dancer:',':dancers:'];
+                           API.sendChat(WootMsg[Math.floor(Math.random() * WootMsg.length)]);
                         setTimeout(function(){
                            document.getElementById("woot").click()
                         }, 650);
