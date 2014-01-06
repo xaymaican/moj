@@ -637,46 +637,6 @@ botMethods.djAdvanceEvent = function(data){
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
- 
-                case "sing":
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                          API.sendChat("I only sing to Bob Marley's tunes");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
-                        
-                case "die":
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                         API.sendChat("My my hey hey Reggae will never die");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
-                        
-                case "answer":
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                          API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
-                        
-                case "stop":
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                           API.sendChat("Ask me no more questions, I'll tell you no more lies.");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;         
-                        
-                case "life":
-                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                          API.sendChat("Life is like a box of chocolates, you never know what you'll get");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
                         
                 case "whywoot":
                         if(typeof command[1] == "undefined"){
@@ -1349,25 +1309,61 @@ botMethods.djAdvanceEvent = function(data){
         }
     });
  
+    API.on(API.CHAT, function(data){
+            var msg = data.message, from = data.from, fromID = data.fromID;
+            var command = msg.substring(1).split(' ');
+        if(mubBot.misc.ready || mubBot.admins.indexOf(fromID) > -1 ||API.getUser(fromID).permission > 1){
+                switch(command[1]){
+                 case "sing":
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                          API.sendChat("I only sing to Bob Marley's tunes");
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
+                case "die":
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                         API.sendChat("My my hey hey Reggae will never die");
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
+                case "answer":
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                          API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                        
+                case "stop":
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                           API.sendChat("Ask me no more questions, I'll tell you no more lies.");
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;         
+                        
+                case "life":
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                          API.sendChat("Life is like a box of chocolates, you never know what you'll get");
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+                        }
+                        break;
+                }
+            }
+    });
+                 
+                 
+                 
+                 
+                 
         
     API.on(API.DJ_ADVANCE, DJ_ADVANCE);
     function DJ_ADVANCE(data){
-        if(ZionBot.settings.ruleSkip && typeof ruleSkip[data.media.id] != "undefined"){
-            switch(ruleSkip[data.media.id].rule){
-                case '1':
-                    API.sendChat('@'+data.dj.username+' sorry this song was banned');
-                    botMethods.skip();
-                    break;
-                case '99':
-                    API.sendChat('@'+data.dj.username+' Just no..');
-                    botMethods.skip();
-                    break;
-                default:
-                    API.sendChat('@'+data.dj.username+' '+ruleSkip[data.media.id].rule);
-                    botMethods.skip();
-                    break;
-            }
-        }
         $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+data.media.cid+'?v=2&alt=jsonc&callback=?', function(json){response = json.data});
         setTimeout(function(){
             if(typeof response === 'undefined' && data.media.format != 2 && ZionBot.settings.removedFilter){
