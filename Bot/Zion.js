@@ -1315,7 +1315,6 @@ botMethods.djAdvanceEvent = function(data){
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        }
         if(data.message.indexOf("sing") === 0){
          API.sendChat("I only sing to Bob Marley's tunes");
             ZionBot.misc.ready = false;
