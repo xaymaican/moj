@@ -582,7 +582,7 @@ botMethods.djAdvanceEvent = function(data){
                            $(".icon-curate").click();
                            $($(".curate").children(".menu").children().children()[0]).mousedown();
                         }, 650);
-                        }else {
+                        }else{
                            API.sendChat("This command requires bouncer +");
                         }
                     }
