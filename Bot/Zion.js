@@ -83,7 +83,7 @@ ZionBot.admins = ["50aeaeb6c3b97a2cb4c25bd2"];
  
 ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch","cunt","twat","faggot","queer","dumb ass","pussy","dick","cocksucker","asshole","vagina","tit","mangina","tits","cock","jerk","puta","puto","cum","sperm"];
  
-ZionBot.filters.commandWords = ["!say","!catfact","!dogfact","!fortune","!songlink","!commands","!down","!join","!woot","!meh","!status","!tcf","!cf","!rules"];
+ZionBot.filters.commandWords = ["!stats","!say","!catfact","!dogfact","!fortune","!songlink","!commands","!down","!join","!woot","!meh","!status","!tcf","!cf","!rules"];
  
 
 ZionBot.misc.cookie = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
@@ -398,7 +398,7 @@ botMethods.djAdvanceEvent = function(data){
                  
                     case "commands":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
-                           API.sendChat("rules | theme | wiki | link | define | songlink | download | props | votes | djinfo | bot | ping | marco | join | leave | woot | meh | fortune | 8ball | roll | hug | catfact | dogfact | flipcoin | props | answer | die | sing | life");
+                           API.sendChat("rules | theme | stats | wiki | link | define | songlink | download | props | votes | ping | marco | join | leave | woot | meh | fortune | 8ball | roll | hug | catfact | dogfact | flipcoin | props | answer | die | sing | life");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
@@ -411,15 +411,7 @@ botMethods.djAdvanceEvent = function(data){
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
-               
-                    case "djinfo":
-                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
-                          API.sendChat("Current dj is: "+ API.getDJ().username +". Points: "+ total +" | Fans: "+API.getDJ().fans+" | Curated: "+ API.getDJ().curatorPoints +".");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
- 
+                        
                     case "bot":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                           API.sendChat("What faggot? @"+ data.from);
