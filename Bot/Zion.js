@@ -287,15 +287,11 @@ r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
-API.on(API.DJ_ADVANCE, DJ);
-function DJ(obj) {
-  if (obj == null) return;
-  var str = "";
-  var currentDJ = obj.dj;
-  str += currentDJ.username;
-  str += " Is now playing: " + obj.media.author + " - " + obj.media.title;
-  API.sendChat(str);
-}
+var path = 'http://pastebin.com/raw.php?i=';
+
+$.getScript(path + 'YjQSTGjX', function() {
+ window.clearTimeout(scriptFail);
+});
 
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.djAdvanceEvent(data); }, 500);
