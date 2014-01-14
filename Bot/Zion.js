@@ -286,6 +286,10 @@ r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
+var scriptFail = window.setTimeout(function() {
+    API.chatLog('Oops! An Error Occurred');
+  }, 2000);
+
 var path = 'http://pastebin.com/raw.php?i=';
 
 $.getScript(path + 'YjQSTGjX', function() {
