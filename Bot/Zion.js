@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2013 by Tawi Jordan - ๖ۣۜĐJ - ɴᴇᴏɴ - TFL
+ Copyright (c) 2013-2017 by Tawi Jordan - ๖ۣۜĐJ - ɴᴇᴏɴ - TFL
  
  Permission to use this software for any purpose without fee is hereby granted, provided
  that the above copyright notice and this permission notice appear in all copies.
@@ -27,11 +27,10 @@
  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  
  
- * NOTE:  PLEASE CONTACT DJ-NEON FOR THIS SCRIPT (DO NOT CHANGE ANYTHING ON THIS SCRIPT OR USE THIS SCRIPT WHICH
- * WAS WRITTEN BY IT'S RIGHTFUL OWNER: DJ NOEN)
+ * [NOTE]: THERE IS NOTHING HERE FOR YOU! COPYING THIS SCRIPT AND USING "IT" or "AS" (yours) WELL SERIOUSLY GET
+ * YOU TO FACE THE CONSEQUENCES!
  *
  * @Author:    Tawi Jordan - ๖ۣۜĐJ - ɴᴇᴏɴ - TFL (Member. on Plug.dj)
- * @Member:    xay (Owner. of MOF)
  *
  */
  
