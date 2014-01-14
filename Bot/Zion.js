@@ -774,7 +774,6 @@ botMethods.djAdvanceEvent = function(data){
                             response = response + " | Command filter: "+ ZionBot.settings.commandFilter;
                             response = response + " | MaxLength: " + ZionBot.settings.maxLength + "m";
                             response = response + " | Cooldown: " + ZionBot.settings.cooldown + "s";
-                            response = response + " | BanSongs: "+ ZionBot.settings.ruleSkip;
                             response = response + " | Removed Video Filter: "+ ZionBot.settings.removedFilter;
                             API.sendChat(response);
                         }
