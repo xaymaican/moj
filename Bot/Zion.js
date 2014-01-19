@@ -55,7 +55,8 @@ ZionBot.misc.ready = true;
 ZionBot.misc.lockSkipping = false;
 ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
- 
+
+var to.user = command[1];
  
 joined = new Date().getTime();
  
@@ -111,13 +112,16 @@ ZionBot.misc.ball = [
 " Very doubtful"];
  
 ZionBot.misc.ht = ["My magic coins says: Tails", "My magic coin says: Heads"];
-ZionBot.misc.roll = [
+
+boombot.misc.roll = [
 "You rolled A 1. Bummer :(",
-"You rolled A 2.Bummer :(",
-"You rolled A 3. Bummer :(",
-"You rolled A 4. Awesome!",
-"You rolled A 5. Awesome!",
-"You rolled A 6. Awesome!"];
+"You rolled A 2. Bummer :(",
+"You rolled A 3. Bummer :("];
+
+boombot.misc.roll2 = [
+"4. Awesome!",
+"5. Awesome!",
+"6. Awesome!"];
  
 ZionBot.misc.catfact = ["Cats have five toes on each front paw, but only four toes on each back paw.","Cats have true fur, in that they have both an undercoat and an outer coat.",
 "Newborn kittens have closed ear canals that don''t begin to open for nine days.When the eyes open, they are always blue at first. They change color over a period of months to the final eye color.",
@@ -1023,10 +1027,13 @@ botMethods.djAdvanceEvent = function(data){
                             var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
-                                    API.sendChat(ZionBot.misc.roll[randomRoll]);
+                                    API.sendChat("@"+ data.from +" You rolled a "+ ZionBot.misc.roll2[randomRoll]);
+                                    setTimeout(function(){
+                                    document.getElementById("woot").click()
+                                    }, 650);
                                     break;
                                 case 1:
-                                    API.sendChat(ZionBot.misc.roll[randomRoll]);
+                                    API.sendChat("@" + data.from + ", "+ ZionBot.misc.roll[randomRoll]);
                                     break;
                             }
                         }else{
@@ -1035,10 +1042,13 @@ botMethods.djAdvanceEvent = function(data){
                             var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
-                                    API.sendChat(ZionBot.misc.roll[randomRoll]);
+                                    API.sendChat("@"+ data.from +" You rolled a "+ ZionBot.misc.roll2[randomRoll]);
+                                    setTimeout(function(){
+                                    document.getElementById("woot").click()
+                                    }, 650);
                                     break;
                                 case 1:
-                                    API.sendChat(ZionBot.misc.roll[randomRoll]);
+                                    API.sendChat("@" + data.from + ", "+ ZionBot.misc.roll[randomRoll]);
                                     break;
                            }
                         }
@@ -1121,37 +1131,25 @@ botMethods.djAdvanceEvent = function(data){
                             var crowd = API.getUsers();
                             var randomUser = Math.floor(Math.random() * crowd.length);
                             var randomCookie = Math.floor(Math.random() * ZionBot.misc.cookie.length);
-                            var randomSentence = Math.floor(Math.random() * 3);
+                            var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
-                                    API.sendChat("@" +crowd[randomUser].username+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
                                     break;
                                 case 1:
-                                    API.sendChat("@" +crowd[randomUser].username+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
-                                    break;
-                                case 2:
-                                    API.sendChat("@" +crowd[randomUser].username+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
-                                    break;
-                                case 3:
-                                    API.sendChat("@" +crowd[randomUser].username+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
                                     break;
                             }
                         }else{
                             if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
                             var randomCookie = Math.floor(Math.random() * ZionBot.misc.cookie.length);
-                            var randomSentence = Math.floor(Math.random() * 3);
+                            var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
-                                    API.sendChat("@" +botMethods.cleanString(command[1])+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
                                     break;
                                 case 1:
-                                    API.sendChat("@" +botMethods.cleanString(command[1])+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie] + ". Enjoy!");
-                                    break;
-                                case 2:
-                                    API.sendChat("@" +botMethods.cleanString(command[1])+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
-                                    break;
-                                case 3:
-                                    API.sendChat("@" +botMethods.cleanString(command[1])+ ", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie] + ". Enjoy!");
                                     break;
                             }
                         }
