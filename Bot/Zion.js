@@ -82,7 +82,7 @@ ZionBot.admins = ["50aeaeb6c3b97a2cb4c25bd2","528fc519c3b97a7d2318d584"];
  
 ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch","cunt","twat","faggot","queer","dumb ass","pussy","dick","cocksucker","asshole","vagina","tit","mangina","tits","cock","jerk","puta","puto","cum","sperm"];
  
-ZionBot.filters.commandWords = ["!stats","!say","!catfact","!dogfact","!fortune","!songlink","!commands","!down","!join","!woot","!meh","!status","!tcf","!cf","!rules"];
+ZionBot.filters.commandWords = [".stats",".say",".catfact",".dogfact",".fortune",".songlink",".commands",".down",".join",".woot",".meh",".status",".tcf",".cf",".rules"];
  
 
 ZionBot.misc.cookie = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
