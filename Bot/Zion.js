@@ -286,16 +286,6 @@ r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
-var scriptFail = window.setTimeout(function() {
-    API.chatLog('Oops! An Error Occurred');
-  }, 2000);
-
-var path = 'http://pastebin.com/raw.php?i=';
-
-$.getScript(path + 'YjQSTGjX', function() {
- window.clearTimeout(scriptFail);
-});
-
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.djAdvanceEvent(data); }, 500);
 }
@@ -1343,7 +1333,7 @@ botMethods.djAdvanceEvent = function(data){
         $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+data.media.cid+'?v=2&alt=jsonc&callback=?', function(json){response = json.data});
         setTimeout(function(){
             if(typeof response === 'undefined' && data.media.format != 2 && ZionBot.settings.removedFilter){
-                //API.sendChat('/me This video may be unavailable!!');
+                API.sendChat('/me This video may be unavailable!!');
                 //botMethods.skip();
             }
         }, 1500);
@@ -1356,7 +1346,7 @@ botMethods.djAdvanceEvent = function(data){
     console.log("ZionScript version " + ZionBot.misc.version);
  
     setTimeout(function(){
-        $.getScript('http://goo.gl/k8RmHS');
+        $.getScript('http://goo.gl/9vurzR');
     }, 1000);
  
     setTimeout(function(){
