@@ -56,7 +56,7 @@ ZionBot.misc.lockSkipping = false;
 ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
 
-var to.user = command[1];
+var to.user = "command[1]";
  
 joined = new Date().getTime();
  
