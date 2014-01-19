@@ -77,8 +77,8 @@ ZionBot.settings.interactive = true;
 ZionBot.settings.ruleSkip = true;
 ZionBot.settings.removedFilter = true;
  
-//Admins                [Dj-Neon-TFL]
-ZionBot.admins = ["50aeaeb6c3b97a2cb4c25bd2"];
+//Admins                [Dj-Neon-TFL]                   [Xay]
+ZionBot.admins = ["50aeaeb6c3b97a2cb4c25bd2","528fc519c3b97a7d2318d584"];
  
 ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch","cunt","twat","faggot","queer","dumb ass","pussy","dick","cocksucker","asshole","vagina","tit","mangina","tits","cock","jerk","puta","puto","cum","sperm"];
  
