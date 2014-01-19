@@ -56,8 +56,6 @@ ZionBot.misc.lockSkipping = false;
 ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
 
-var to.user = "command[1]";
- 
 joined = new Date().getTime();
  
 cancel = false;
@@ -900,17 +898,17 @@ botMethods.djAdvanceEvent = function(data){
                                 case 0:
                                     API.sendChat("Hugs? Forget that!");
                                     setTimeout(function(){
-                                        API.sendChat("/me grabs @"+botMethods.cleanString(command[1])+"'s ass");
+                                        API.sendChat("/me grabs @"+ command[1] +"'s ass");
                                     }, 650);
                                     break;
                                 case 1:
-                                    API.sendChat("/me gives @"+botMethods.cleanString(command[1])+" a big bear hug");
+                                    API.sendChat("/me gives @"+ command[1] +" a big bear hug");
                                     break;
                                 case 2:
-                                    API.sendChat("/me gives @"+botMethods.cleanString(command[1])+" a soft, furry hug");
+                                    API.sendChat("/me gives @"+ command[1] +" a soft, furry hug");
                                     break;
                                 case 3:
-                                    API.sendChat("/me gives @"+botMethods.cleanString(command[1])+" an awkward hug");
+                                    API.sendChat("/me gives @"+ command[1] +" an awkward hug");
                                     break;
                             }
                         }
@@ -1134,10 +1132,10 @@ botMethods.djAdvanceEvent = function(data){
                             var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
-                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ command[1] +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
                                     break;
                                 case 1:
-                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ command[1] +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
                                     break;
                             }
                         }else{
@@ -1146,10 +1144,10 @@ botMethods.djAdvanceEvent = function(data){
                             var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
-                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
+                                    API.sendChat("@"+ command[1] +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie]+ ". Enjoy!");
                                     break;
                                 case 1:
-                                    API.sendChat("@"+ to.user +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie] + ". Enjoy!");
+                                    API.sendChat("@"+ command[1] +", @" + data.from + " has rewarded you with " + ZionBot.misc.cookie[randomCookie] + ". Enjoy!");
                                     break;
                             }
                         }
