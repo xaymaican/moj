@@ -56,7 +56,7 @@ ZionBot.misc.lockSkipping = false;
 ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
 
-var to.user = command[1];
+var user = command[1];
  
 joined = new Date().getTime();
  
@@ -113,12 +113,12 @@ ZionBot.misc.ball = [
  
 ZionBot.misc.ht = ["My magic coins says: Tails", "My magic coin says: Heads"];
 
-boombot.misc.roll = [
+ZionBot.misc.roll = [
 "You rolled A 1. Bummer :(",
 "You rolled A 2. Bummer :(",
 "You rolled A 3. Bummer :("];
 
-boombot.misc.roll2 = [
+ZionBot.misc.roll2 = [
 "4. Awesome!",
 "5. Awesome!",
 "6. Awesome!"];
