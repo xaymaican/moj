@@ -287,7 +287,7 @@ API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
 function djAdvanceEvent(data){
-    setTimeout(function(){ botMethods.djAdvanceEvent(data); }, 500);
+    setTimeout(function(){ botMethods.data }, 500);
 }
  
 botMethods.skip = function(){
