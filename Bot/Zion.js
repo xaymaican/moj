@@ -290,7 +290,6 @@ ZionBot.pubVars.command = false;
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
  
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
-API.on(API.DJ_ADVANCE, listener);
 API.on(API.DJ_ADVANCE, woot);
 
 window.setInterval(sendAnnouncement, 1000 * announcementTick);
