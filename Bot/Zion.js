@@ -59,6 +59,8 @@ ZionBot.misc.ready = true;
 ZionBot.misc.lockSkipping = false;
 ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
+var announcementTick = 60 * 7;
+var lastAnnouncement = 0;
 
 joined = new Date().getTime();
  
@@ -89,7 +91,19 @@ ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch
 ZionBot.filters.commandWords = [".stats",".say",".catfact",".dogfact",".fortune",".songlink",".commands",".down",".join",".woot",".meh",".status",".tcf",".cf",".rules"];
  
 
-ZionBot.misc.cookie = ["a chocolate chip cookie", "a sugar cookie", "an oatmeal raisin cookie", "a 'special' brownie", "an animal cracker", "a scooby snack", "a blueberry muffin", "a cupcake"];
+var announcements = [
+"Hey guys! Connect your song to the previous song by reusing a word in the artist or title."
+];
+
+ZionBot.misc.cookie = [
+"a chocolate chip cookie", 
+"a sugar cookie", 
+"an oatmeal raisin cookie", 
+"a 'special' brownie", 
+"an animal cracker", 
+"a scooby snack", 
+"a blueberry muffin", 
+"a cupcake"];
  
 ZionBot.misc.ball = [
 " It is certain",
@@ -276,11 +290,23 @@ ZionBot.pubVars.command = false;
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
  
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
-
+API.on(API.DJ_ADVANCE, listener);
 API.on(API.DJ_ADVANCE, woot);
-function woot(){
-$('#woot').click();
-} 
+
+window.setInterval(sendAnnouncement, 1000 * announcementTick);
+function sendAnnouncement()
+{
+        if (lastAnnouncement++ >= announcements.length - 1)
+        {
+                lastAnnouncement = 0;
+        }
+    chatMe(announcements[lastAnnouncement]);
+}
+ 
+function chatMe(msg)
+{
+        API.sendChat(msg);
+}
 
 API.on(API.USER_JOIN, UserJoin);
 function UserJoin(user)
@@ -296,6 +322,10 @@ LeaveMsg = ["Thanks for stopping by, {user} Stay a little longer next time!","Oh
 r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
+
+function woot(){
+$('#woot').click();
+} 
 
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.data }, 500);
