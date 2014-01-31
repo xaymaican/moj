@@ -325,8 +325,8 @@ API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
 function Nomeh(obj) {
-  var vote = obj.vote == 1 ? "woot" : "meh";
-  alert(obj.user.username + " voted " + vote);
+  var vote = "meh";
+  API.sendChat(obj.user.username + " voted " + vote);
 }
 
 function woot(){
