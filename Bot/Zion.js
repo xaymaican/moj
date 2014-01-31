@@ -291,6 +291,10 @@ Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.l
  
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
 API.on(API.DJ_ADVANCE, woot);
+API.on(API.USER_JOIN, UserJoin);
+API.on(API.USER_LEAVE, Leave);
+API.on(API.VOTE_UPDATE, Nomeh);
+
 
 window.setInterval(sendAnnouncement, 1000 * announcementTick);
 function sendAnnouncement()
@@ -307,7 +311,6 @@ function chatMe(msg)
         API.sendChat(msg);
 }
 
-API.on(API.USER_JOIN, UserJoin);
 function UserJoin(user)
 {
 JoinMsg = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
@@ -315,11 +318,15 @@ r = Math.floor(Math.random() * JoinMsg.length);
 API.sendChat(JoinMsg[r].replace("{user}", user.username));
 }
 
-API.on(API.USER_LEAVE, Leave);
 function Leave(user) {
 LeaveMsg = ["Thanks for stopping by, {user} Stay a little longer next time!","Oh, don't leave, {user} My life will be a lot emptier without you in it!","Nice of you to visit us, {user} Thanks for stealing all the beer before you left!"];
 r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
+}
+
+function Nomeh(obj) {
+  var vote = obj.vote == 1 ? "woot" : "meh";
+  alert(obj.user.username + " voted " + vote);
 }
 
 function woot(){
