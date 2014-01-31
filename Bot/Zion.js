@@ -293,8 +293,6 @@ API.on(API.DJ_ADVANCE, djAdvanceEvent);
 API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
-API.on(API.VOTE_UPDATE, Nomeh);
-
 
 window.setInterval(sendAnnouncement, 1000 * announcementTick);
 function sendAnnouncement()
@@ -322,11 +320,6 @@ function Leave(user) {
 LeaveMsg = ["Thanks for stopping by, {user} Stay a little longer next time!","Oh, don't leave, {user} My life will be a lot emptier without you in it!","Nice of you to visit us, {user} Thanks for stealing all the beer before you left!"];
 r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
-}
-
-function Nomeh(obj) {
-  var vote = obj.vote == 2 ? "woot" : "meh";
-  API.sendChat(obj.user.username + " voted " + vote);
 }
 
 function woot(){
@@ -1368,6 +1361,12 @@ botMethods.djAdvanceEvent = function(data){
         
         if(data.message.indexOf("life") === 0){
          API.sendChat("@" + data.from +" Life is like a box of chocolates, you never know what you'll get");
+            ZionBot.misc.ready = false;
+            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+           }
+         
+        if(data.message.indexOf("bot help") === 0 || data.message.indexOf("help bot") === 0){
+         API.sendChat("@" + data.from +" Please see the room info for more help or visit to http://tinyurl.com/Xaymaican to view our rules and guidelines.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
