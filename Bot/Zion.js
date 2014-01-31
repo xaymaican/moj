@@ -325,7 +325,7 @@ API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
 
 function Nomeh(obj) {
-  var vote = obj.vote == 1 ? "" : "meh";
+  var vote = obj.vote == 1 ? : "meh";
   API.sendChat(obj.user.username + " voted " + vote);
 }
 
@@ -1338,36 +1338,36 @@ botMethods.djAdvanceEvent = function(data){
     API.on(API.CHAT, function(data){
         var msg = data.message, from = data.from, fromID = data.fromID;
         if(data.message.indexOf('cheer') === 0){
-         API.sendChat('Chune!!!');
+         API.sendChat("@" + data.from +" Chune!!!");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         if(data.message.indexOf("sing") === 0){
-         API.sendChat("I only sing to Bob Marley's tunes");
+         API.sendChat("@" + data.from +" I only sing to Bob Marley's tunes");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
         if(data.message.indexOf("die") === 0){
-         API.sendChat("My my hey hey Reggae will never die");
+         API.sendChat("@" + data.from +" My my hey hey Reggae will never die");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
         if(data.message.indexOf("answer") === 0){
-         API.sendChat("Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
+         API.sendChat("@" + data.from +" Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
         if(data.message.indexOf("stop") === 0){
-         API.sendChat("Ask me no more questions, I'll tell you no more lies.");
+         API.sendChat("@" + data.from +" Ask me no more questions, I'll tell you no more lies.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
         if(data.message.indexOf("life") === 0){
-         API.sendChat("Life is like a box of chocolates, you never know what you'll get");
+         API.sendChat("@" + data.from +" Life is like a box of chocolates, you never know what you'll get");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
