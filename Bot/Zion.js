@@ -400,8 +400,6 @@ botMethods.djAdvanceEvent = function(data){
                     case "commands":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
                            API.sendChat("rules | theme | stats | wiki | link | define | songlink | download | props | votes | ping | marco | join | leave | woot | meh | fortune | 8ball | roll | hug | catfact | dogfact | flipcoin | props | answer | die | sing | life");
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
  
