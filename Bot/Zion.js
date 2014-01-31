@@ -52,7 +52,7 @@ toSave = {};
 toSave.settings = ZionBot.settings;
 toSave.moderators = ZionBot.moderators;
  
-ZionBot.misc.version = "1.0.15";
+ZionBot.misc.version = "1.0.17";
 ZionBot.misc.origin = "This bot was created by xay and Neon alone, and it is copyrighted!";
 ZionBot.misc.changelog = "Added a secondary check for history";
 ZionBot.misc.ready = true;
