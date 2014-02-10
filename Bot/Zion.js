@@ -447,15 +447,8 @@ botMethods.djAdvanceEvent = function(data){
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
-                        
-                        
-                        
-                    case "que":
-                         var user = API.getUser(data.from);
-                         API.moderateAddDJ(data.from);
-                         break;
- 
-                    case "ping":
+                    
+                   case "ping":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
                             API.sendChat("@"+ data.from +" Pong!");
                             ZionBot.misc.ready = false;
