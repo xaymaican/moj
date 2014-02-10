@@ -451,7 +451,8 @@ botMethods.djAdvanceEvent = function(data){
                         
                         
                     case "que":
-                         API.moderateAddDJ(data.fromID);
+                         var user = API.getUser(data.fromID);
+                         API.moderateAddDJ(user);
                          break;
                         
                     case "bot":
