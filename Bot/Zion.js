@@ -1330,36 +1330,36 @@ botMethods.djAdvanceEvent = function(data){
     
     API.on(API.CHAT, function(data){
         var msg = data.message, from = data.from, fromID = data.fromID;
-        if(data.message.indexOf('cheer') === 0){
+        if(data.message.indexOf('bot cheer') === 0 || data.message.indexOf("cheer bot") === 0){
          API.sendChat("@" + data.from +" Chune!!!");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
-        if(data.message.indexOf("sing") === 0){
+        if(data.message.indexOf("bot sing") === 0 || data.message.indexOf("sing bot") === 0){
          API.sendChat("@" + data.from +" I only sing to Bob Marley's tunes");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
-        if(data.message.indexOf("die") === 0){
+        if(data.message.indexOf("bot die") === 0 || data.message.indexOf("die bot") === 0){
          API.sendChat("@" + data.from +" My my hey hey Reggae will never die");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
-        if(data.message.indexOf("answer") === 0){
+        if(data.message.indexOf("bot answer") === 0 || data.message.indexOf("answer bot") === 0){
          API.sendChat("@" + data.from +" Ask me no questions, I'll tell you no lies ask me again I'll spit in your eyes.");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
-        if(data.message.indexOf("stop") === 0){
-         API.sendChat("@" + data.from +" Ask me no more questions, I'll tell you no more lies.");
+        if(data.message.indexOf("bot smile") === 0 || data.message.indexOf("smile bot") === 0){
+         API.sendChat("Great music always makes me smile!");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
         
-        if(data.message.indexOf("life") === 0){
+        if(data.message.indexOf("bot life?") === 0 || data.message.indexOf("life bot?") === 0){
          API.sendChat("@" + data.from +" Life is like a box of chocolates, you never know what you'll get");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
@@ -1367,6 +1367,12 @@ botMethods.djAdvanceEvent = function(data){
          
         if(data.message.indexOf("bot help") === 0 || data.message.indexOf("help bot") === 0){
          API.sendChat("@" + data.from +" Please see the room info for more help or visit to http://tinyurl.com/Xaymaican to view our rules and guidelines.");
+            ZionBot.misc.ready = false;
+            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
+           }
+           
+        if(data.message.indexOf("bot hug?") === 0 || data.message.indexOf("hug bot?") === 0 || data.message.indexOf("hug me bot") === 0 || data.message.indexOf("bot hug me") === 0 || data.message.indexOf("hugs bot") === 0){
+         API.sendChat("@" + data.from +" I would give you a hug but I need a kiss to recharge my battery!");
             ZionBot.misc.ready = false;
             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
            }
