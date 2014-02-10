@@ -448,6 +448,12 @@ botMethods.djAdvanceEvent = function(data){
                         }
                         break;
                         
+                        
+                        
+                    case "que":
+                         API.moderateAddDJ(data.fromID);
+                         break;
+                        
                     case "bot":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                           API.sendChat("Yeah mon? @"+ data.from);
