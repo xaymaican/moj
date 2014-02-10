@@ -451,17 +451,9 @@ botMethods.djAdvanceEvent = function(data){
                         
                         
                     case "que":
-                         var user = API.getUser(data.fromID);
-                         API.moderateAddDJ(user);
+                         var user = API.getUser(data.from);
+                         API.moderateAddDJ(data.from);
                          break;
-                        
-                    case "bot":
-                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
-                          API.sendChat("Yeah mon? @"+ data.from);
-                            ZionBot.misc.ready = false;
-                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
-                        }
-                        break;
  
                     case "ping":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
