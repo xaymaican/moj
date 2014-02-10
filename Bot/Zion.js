@@ -86,7 +86,7 @@ ZionBot.settings.removedFilter = true;
 //Admins                [Dj-Neon-TFL]                   [Xay]
 ZionBot.admins = ["50aeaeb6c3b97a2cb4c25bd2","528fc519c3b97a7d2318d584"];
  
-ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch","cunt","twat","faggot","queer","dumb ass","pussy","dick","cocksucker","asshole","vagina","tit","mangina","tits","cock","jerk","puta","puto","cum","sperm"];
+//ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch","cunt","twat","faggot","queer","dumb ass","pussy","dick","cocksucker","asshole","vagina","tit","mangina","tits","cock","jerk","puta","puto","cum","sperm"];
  
 ZionBot.filters.commandWords = [".stats",".say",".catfact",".dogfact",".fortune",".songlink",".commands",".down",".join",".woot",".meh",".status",".tcf",".cf",".rules"];
  
@@ -737,11 +737,11 @@ botMethods.djAdvanceEvent = function(data){
                         }
                         break;
  
-                    case "swearfilter":
+                    /*case "swearfilter":
                     case "sf":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1) ZionBot.settings.swearFilter ? API.sendChat("Swearing filter is enabled") : API.sendChat("Swearing filter is disabled");
                         botMethods.save();
-                        break;
+                        break;*/
  
                     case "commandfilter":
                     case "cf":
@@ -749,7 +749,7 @@ botMethods.djAdvanceEvent = function(data){
                         botMethods.save();
                         break;
  
-                    case "tsf":
+                    /*case "tsf":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                             if(ZionBot.settings.swearFilter){
                                 ZionBot.settings.swearFilter = false;
@@ -760,7 +760,7 @@ botMethods.djAdvanceEvent = function(data){
                             }
                         }
                         botMethods.save();
-                        break;
+                        break;*/
        
                     case "tcf":
                         if(ZionBot.admins.indexOf(fromID) > -1){
@@ -806,7 +806,7 @@ botMethods.djAdvanceEvent = function(data){
                             }
                             hours == 0 ? response = "Running for " + minutes + "m " : response = "Running for " + hours + "h " + minutes + "m";
                             response = response + " | Begger filter: "+ ZionBot.settings.beggerFilter;
-                            response = response + " | Swear filter: "+ ZionBot.settings.swearFilter;
+                            //response = response + " | Swear filter: "+ ZionBot.settings.swearFilter;
                             response = response + " | Command filter: "+ ZionBot.settings.commandFilter;
                             response = response + " | MaxLength: " + ZionBot.settings.maxLength + "m";
                             response = response + " | Cooldown: " + ZionBot.settings.cooldown + "s";
