@@ -609,7 +609,7 @@ botMethods.djAdvanceEvent = function(data){
                            $($(".curate").children(".menu").children().children()[0]).mousedown();
                         }, 650);
                         }else{
-                           API.sendChat("This command requires bouncer +");
+                           API.sendChat("Sorry, @"+ data.from +", only a moderator can do that you bloodclawt. Only special people get to be mods!");
                         }
                     }
                         break;
@@ -624,7 +624,7 @@ botMethods.djAdvanceEvent = function(data){
                            document.getElementById("woot").click()
                         }, 650);
                         }else {
-                           API.sendChat("This command requires bouncer +");
+                           API.sendChat("Sorry, @"+ data.from +", only a moderator can do that you bloodclawt. Only special people get to be mods!");
                         }
                     }
                         break;
@@ -637,7 +637,7 @@ botMethods.djAdvanceEvent = function(data){
                            document.getElementById("meh").click()
                         }, 650);
                         }else {
-                           API.sendChat("This command requires bouncer +");
+                           API.sendChat("Sorry, @"+ data.from +", only a moderator can do that you bloodclawt. Only special people get to be mods!");
                         }
                     }
                         break;
@@ -717,7 +717,7 @@ botMethods.djAdvanceEvent = function(data){
                             API.moderateForceSkip();
                             API.moderateLockWaitList(false);
                             }else{
-                            API.sendChat("This command requires Admin!");
+                           API.sendChat("Sorry, @"+ data.from +", only a moderator can do that you bloodclawt. Only special people get to be mods!");
                         }
                         break;
  
@@ -725,7 +725,7 @@ botMethods.djAdvanceEvent = function(data){
                         if(ZionBot.admins.indexOf(fromID) > -1){
                             API.sendChat("@"+ data.from +" Test Successful");
                             }else{
-                            API.sendChat("This command requires Admin!");
+                           API.sendChat("Sorry, @"+ data.from +", only a moderator can do that you bloodclawt. Only special people get to be mods!");
                         }
                         break;
  
