@@ -61,6 +61,7 @@ ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
 var announcementTick = 60 * 7;
 var lastAnnouncement = 0;
+var lobby = "the-music-of-jamaica";
 
 joined = new Date().getTime();
  
@@ -288,11 +289,13 @@ ZionBot.pubVars.skipOnExceed;
 ZionBot.pubVars.command = false;
  
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
- 
+if(window.location.href === "http://plug.dj/"+lobby+"/"){
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
 API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
+API.on(API.DJ_ADVANCE, DJ_ADVANCE);
+
 
 window.setInterval(sendAnnouncement, 1000 * announcementTick);
 function sendAnnouncement()
@@ -1378,7 +1381,6 @@ botMethods.djAdvanceEvent = function(data){
     });
     
     
-    API.on(API.DJ_ADVANCE, DJ_ADVANCE);
     function DJ_ADVANCE(data){
         $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+data.media.cid+'?v=2&alt=jsonc&callback=?', function(json){response = json.data});
         setTimeout(function(){
@@ -1405,4 +1407,7 @@ botMethods.djAdvanceEvent = function(data){
         });
     }, 3000);
  
-    API.sendChat('ZionScript v'+ZionBot.misc.version+' Reporting for duty!')
+    API.sendChat('ZionScript v'+ZionBot.misc.version+' Reporting for duty!');
+   }else{
+    API.sendChat("This bot Cannot function in this lobby! Now alerting Socket...");
+   };
