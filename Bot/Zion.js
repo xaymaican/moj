@@ -29,7 +29,7 @@
  
 
  * @Author:    Tawi Jordan - ๖ۣۜĐJ - ɴᴇᴏɴ - TFL (Member. on Plug.dj)
- * @author:    Xat (Owner of MOJ)
+ * @author:    Xay (Owner of MOJ)
 
 
  * [NOTE]: THERE IS NOTHING HERE FOR YOU! COPYING THIS SCRIPT AND USING "IT" or "AS" 
@@ -320,7 +320,8 @@ API.sendChat(JoinMsg[r].replace("{user}", user.username));
 }
 
 function Leave(user) {
-LeaveMsg = ["Thanks for stopping by, {user} Stay a little longer next time!","Oh, don't leave, {user} My life will be a lot emptier without you in it!","Nice of you to visit us, {user} Thanks for stealing all the beer before you left!"];
+LeaveMsg = ["Thanks for stopping by, {user} Galang bout yuh business!","Inna di morrows, {user}","Nice of you to visit us, {user}
+Thanks for stealing all the spliffs before you left!"];
 r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
