@@ -59,7 +59,7 @@ ZionBot.misc.ready = true;
 ZionBot.misc.lockSkipping = false;
 ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
-var announcementTick = 60 * 7;
+var announcementTick = 60 * 45;
 var lastAnnouncement = 0;
 var lobby = "the-music-of-jamaica";
 
