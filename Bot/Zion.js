@@ -320,8 +320,7 @@ API.sendChat(JoinMsg[r].replace("{user}", user.username));
 }
 
 function Leave(user) {
-LeaveMsg = ["Thanks for stopping by, {user} Galang bout yuh business!","Inna di morrows, {user}","Nice of you to visit us, {user}
-Thanks for stealing all the spliffs before you left!"];
+LeaveMsg = ["Thanks for stopping by, @{user} Galang bout yuh business!","Inna di morrows, @{user}","Nice of you to visit us, @{user}","Thanks for stealing all the spliffs before you left! @{user}"];
 r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
 }
