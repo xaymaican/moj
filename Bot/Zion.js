@@ -626,7 +626,7 @@ botMethods.djAdvanceEvent = function(data){
                 case "chune":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
                         if(typeof command[1] === "undefined"){
-                         var WootMsg = ['chune','skank', 'wub', 'w00b', 'headbang', 'breakdance', 'flashdance', 'bravo', 'roboboogie', 'disco', 'lambada', 'grind', 'getdown', 'get_down', 'barrelroll', 'tapdance','rock', 'doabarrelroll', 'boogie', 'shake', 'shakeit', 'bob', 'bop', 'dance','bounce','swing','rave',':metal:',':+1:',':thumbsup:','groove',':dancer:',':dancers:'];
+                         var WootMsg = ['chune','skank', 'wub', 'w00b', 'headbang', 'breakdance', 'flashdance', 'bravo', 'roboboogie', 'disco', 'lambada', 'grind', 'getdown', 'get_down', 'barrelroll', 'tapdance','rock', 'doabarrelroll', 'boogie', 'shake', 'shakeit', 'bob', 'bop', 'dance','bounce','swing','rave',':metal:',':+1:',':thumbsup:','groove',':dancer:',':dancers:',':speaker::fire:'];
                            API.sendChat(WootMsg[Math.floor(Math.random() * WootMsg.length)]);
                         setTimeout(function(){
                            document.getElementById("woot").click()
