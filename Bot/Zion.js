@@ -52,7 +52,7 @@ toSave = {};
 toSave.settings = ZionBot.settings;
 toSave.moderators = ZionBot.moderators;
  
-ZionBot.misc.version = "1.0.19";
+ZionBot.misc.version = "1.0.22";
 ZionBot.misc.origin = "This bot was created by xay and Neon alone, and it is copyrighted!";
 ZionBot.misc.changelog = "Added a secondary check for history";
 ZionBot.misc.ready = true;
@@ -448,7 +448,7 @@ botMethods.djAdvanceEvent = function(data){
                         
                     case "help":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-                           API.sendChat(".{commands} | .{command}");
+                           API.sendChat("Hey there you can visit our page here: http://moj.neocities.org/");
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
