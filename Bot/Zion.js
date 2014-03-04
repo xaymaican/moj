@@ -88,14 +88,15 @@ ZionBot.settings.removedFilter = true;
 ZionBot.admins = ["50aeaeb6c3b97a2cb4c25bd2","528fc519c3b97a7d2318d584"];
  
 //ZionBot.filters.swearWords = ["slut","mofo","penis","penus","fuck","shit","bitch","cunt","twat","faggot","queer","dumb ass","pussy","dick","cocksucker","asshole","vagina","tit","mangina","tits","cock","jerk","puta","puto","cum","sperm"];
- 
 ZionBot.filters.commandWords = [".stats",".say",".catfact",".dogfact",".fortune",".songlink",".commands",".down",".join",".woot",".meh",".status",".tcf",".cf",".rules"];
  
-
+// Random Announcements 
 var announcements = [
 "Hey guys! Connect your song to the previous song by reusing a word in the artist or title."
 ];
 
+
+// Fun misc for bots commands. 
 ZionBot.misc.cookie = [
 "a chocolate chip cookie", 
 "a sugar cookie", 
@@ -390,28 +391,29 @@ botMethods.djAdvanceEvent = function(data){
         API.moderateAddDJ(ZionBot.misc.lockSkipped);
         ZionBot.misc.lockSkipped = "0";
         ZionBot.misc.lockSkipping = false;
-        setTimeout(function(){ API.moderateRoomProps(false, true); }, 500);
+        setTimeout(function(){ API.moderateForceSkip(); }, 500);
     }
     var song = API.getMedia();
     if(botMethods.checkHistory() > 0 && ZionBot.settings.historyFilter){
         if(API.getUser().permission < 2){
             //API.sendChat("This song is in the history! You should make me a mod so that I could skip it!");
         }else if(API.getUser().permission > 1){
-            //API.sendChat("@" + API.getDJ().username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
+            //API.sendChat("@"+ API.getDJ().username +", playing songs that are in the history isn't allowed, please check next time! Skipping..");
             //API.moderateForceSkip();
         }else if(song.duration > ZionBot.settings.maxLength * 60){
             ZionBot.pubVars.skipOnExceed = setTimeout( function(){
-                //API.sendChat("@"+ API.getDJ().username +" You have now played for as long as this room allows, time to let someone else have the booth!");
-                //API.moderateForceSkip();
-            }, ZionBot.settings.maxLength * 60000);
-                //API.sendChat("@"+ API.getDJ().username +" This song will be skipped " + ZionBot.settings.maxLength + " minutes from now because it exceeds the max song length.");
+               //API.sendChat("@"+ API.getDJ().username +" You have now played for as long as this room allows, time to let someone else have the booth!");
+               //API.moderateForceSkip();
+        },  ZionBot.settings.maxLength * 1000);
+               //API.sendChat("@"+ API.getDJ().username +" This song will be skipped " + ZionBot.settings.maxLength + " minutes from now because it exceeds the max song length.");
+               //API.moderateForceSkip();
         }else{
             setTimeout(function(){
-                if(botMethods.checkHistory() > 0 && ZionBot.settings.historyFilter){
-                    //API.sendChat("@" + API.getDJ().username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
-                    //API.moderateForceSkip();
-                };
-            }, 1500);
+              if(botMethods.checkHistory() > 0 && ZionBot.settings.historyFilter){
+               //API.sendChat("@"+ API.getDJ().username +", playing songs that are in the history isn't allowed, please check next time! Skipping..");
+               //API.moderateForceSkip();
+            };
+            }, 1000);
         }
     }
 };
