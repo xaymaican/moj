@@ -290,15 +290,13 @@ ZionBot.pubVars.skipOnExceed;
 ZionBot.pubVars.command = false;
  
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
-if(window.location.href === "http://plug.dj/"+lobby+"/"){
+if(window.location.href === "http://plug.dj/"+lobby+"/"){window.setInterval(sendAnnouncement, 1000 * announcementTick);
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
 API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
 API.on(API.DJ_ADVANCE, DJ_ADVANCE);
 
-
-window.setInterval(sendAnnouncement, 1000 * announcementTick);
 function sendAnnouncement()
 {
         if (lastAnnouncement++ >= announcements.length - 1)
@@ -311,20 +309,20 @@ function sendAnnouncement()
 function chatMe(msg)
 {
         API.sendChat(msg);
-}
+};
 
 function UserJoin(user)
 {
 JoinMsg = ["Welcome @{user}! to The Music Of Jamaica Room, the music you play should be of Jamaican origin"];
 r = Math.floor(Math.random() * JoinMsg.length);
 API.sendChat(JoinMsg[r].replace("{user}", user.username));
-}
+};
 
 function Leave(user) {
 LeaveMsg = ["Thanks for stopping by, @{user} Galang bout yuh business!","Inna di morrows, @{user}","Nice of you to visit us, @{user}","Thanks for stealing all the spliffs before you left! @{user}"];
 r = Math.floor(Math.random() * LeaveMsg.length);
 API.sendChat(LeaveMsg[r].replace("{user}", user.username));
-}
+};
 
 function woot(){
 $('#woot').click();
@@ -332,12 +330,36 @@ $('#woot').click();
 
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.data }, 500);
-}
+};
  
 botMethods.skip = function(){
-    setTimeout(function(){
-        if(!cancel) API.moderateForceSkip();
-    }, 3500);
+setTimeout(function(){
+API.moderateForceSkip();
+}, 500);
+};
+
+ZionBot.unhook = function(){
+setTimeout(function(){
+API.off(API.DJ_ADVANCE, djAdvanceEvent);
+API.off(API.DJ_ADVANCE, woot);
+API.off(API.USER_JOIN, UserJoin);
+API.off(API.USER_LEAVE, Leave);
+API.off(API.DJ_ADVANCE, DJ_ADVANCE);
+API.off(API.USER_JOIN);
+API.off(API.USER_LEAVE);
+API.off(API.USER_SKIP);
+API.off(API.USER_FAN);
+API.off(API.CURATE_UPDATE);
+API.off(API.DJ_ADVANCE);
+API.off(API.VOTE_UPDATE);
+API.off(API.CHAT);
+}, 500);
+};
+
+ZionBot.hook = function(){
+setTimeout(function(){
+(function(){$.getScript('http://goo.gl/pmEqcN');}());
+}, 500);
 };
  
 botMethods.load = function(){
@@ -563,7 +585,7 @@ botMethods.djAdvanceEvent = function(data){
                             });
                         }
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                            mubBot.misc.ready = false;
+                            ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
@@ -619,6 +641,48 @@ botMethods.djAdvanceEvent = function(data){
                         }else{
                            API.sendChat("Sorry, @"+ data.from +", only a moderator can do that you bloodclawt. Only special people get to be mods!");
                         }
+                    }
+                        break;
+                        
+                case "reload":
+                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                           API.sendChat("Now reloading script...");
+                        setTimeout(function(){
+                           ZionBot.unhook();
+                        }, 150);
+                        setTimeout(function(){
+                           ZionBot.hook();
+                        }, 550);
+                        }else{
+                           API.sendChat("This command requires bouncer +");
+                        }
+                        break;
+                        
+                    case "die":
+                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                           API.sendChat('Unhooking Events...');
+                        setTimeout(function(){
+                           API.sendChat('Deleting bot data...');
+                        }, 150);
+                        setTimeout(function(){
+                           API.sendChat('Consider me dead');
+                        }, 475);
+                        setTimeout(function(){
+                           ZionBot.unhook();
+                        }, 700);
+                        }else{
+                           API.sendChat("This command requires bouncer +");
+                        }
+                        break;    
+ 
+                    case "meh":
+                        if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
+                           API.sendChat("Bummer, A meh has been requested!!");
+                        setTimeout(function(){
+                           document.getElementById("meh").click()
+                        }, 650);
+                        }else{
+                           API.sendChat("This command requires bouncer +");
                     }
                         break;
                        
@@ -696,9 +760,9 @@ botMethods.djAdvanceEvent = function(data){
                         }else{
                             API.sendChat("Reserve Mehs for songs that are a) extremely overplayed b) off genre c) absolutely god awful or d) troll songs. ");
                         }
-                        if(mubBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-                            mubBot.misc.ready = false;
-                            setTimeout(function(){ mubBot.misc.ready = true; }, mubBot.settings.cooldown * 1000);
+                        if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+                            ZionBot.misc.ready = false;
+                            setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
                         }
                         break;
  
@@ -787,7 +851,7 @@ botMethods.djAdvanceEvent = function(data){
                     case "author":
                     case "authors":
                     case "creator":
-                        API.sendChat(mubBot.misc.origin);
+                        API.sendChat(ZionBot.misc.origin);
                         if(ZionBot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
                             ZionBot.misc.ready = false;
                             setTimeout(function(){ ZionBot.misc.ready = true; }, ZionBot.settings.cooldown * 1000);
@@ -827,7 +891,7 @@ botMethods.djAdvanceEvent = function(data){
                                 ZionBot.settings.cooldown = 0.0001;
                                 API.sendChat('Cooldown disabled');
                             }else{
-                                mubBot.settings.cooldown = command[1];
+                                ZionBot.settings.cooldown = command[1];
                                 API.sendChat('New cooldown is '+ZionBot.settings.cooldown+' seconds');
                             }
                         }
@@ -866,7 +930,7 @@ botMethods.djAdvanceEvent = function(data){
                                 ZionBot.settings.interactive = false;
                                 API.sendChat("Bot will no longer interact.");
                             }else{
-                                mubBot.settings.interactive = true;
+                                ZionBot.settings.interactive = true;
                                 API.sendChat("Bot will now interact.");
                             }
                         }
@@ -1011,7 +1075,7 @@ botMethods.djAdvanceEvent = function(data){
                             }
                         }else{
                             if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-                            var randomDogfact = Math.floor(Math.random() * mubBot.misc.dogfact.length);
+                            var randomDogfact = Math.floor(Math.random() * ZionBot.misc.dogfact.length);
                             var randomSentence = Math.floor(Math.random() * 1);
                             switch(randomSentence){
                                 case 0:
