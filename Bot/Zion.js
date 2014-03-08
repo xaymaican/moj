@@ -61,7 +61,7 @@ ZionBot.misc.lockSkipped = "0";
 ZionBot.misc.tacos = new Array();
 var announcementTick = 60 * 45;
 var lastAnnouncement = 0;
-var lobby = "the-music-of-jamaica";
+var lobby = "the-music-of-jamaica"; // Not to be changed!
 
 joined = new Date().getTime();
  
