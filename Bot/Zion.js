@@ -296,6 +296,9 @@ API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
 API.on(API.DJ_ADVANCE, DJ_ADVANCE);
+$('#playback').hide();
+$('#audience').hide();
+API.setVolume(0);
 
 function sendAnnouncement()
 {
@@ -333,13 +336,10 @@ function djAdvanceEvent(data){
 };
  
 botMethods.skip = function(){
-setTimeout(function(){
 API.moderateForceSkip();
-}, 500);
 };
 
 ZionBot.unhook = function(){
-setTimeout(function(){
 API.off(API.DJ_ADVANCE, djAdvanceEvent);
 API.off(API.DJ_ADVANCE, woot);
 API.off(API.USER_JOIN, UserJoin);
@@ -353,13 +353,16 @@ API.off(API.CURATE_UPDATE);
 API.off(API.DJ_ADVANCE);
 API.off(API.VOTE_UPDATE);
 API.off(API.CHAT);
-}, 500);
+$('#playback').show();
+$('#audience').show();
+API.setVolume(15);
 };
 
 ZionBot.hook = function(){
-setTimeout(function(){
-(function(){$.getScript('http://goo.gl/pmEqcN');}());
-}, 500);
+(function(){$.getScript('http://goo.gl/pmEqcN');
+$('#playback').hide();
+$('#audience').hide();
+API.setVolume(0);}());}());
 };
  
 botMethods.load = function(){
