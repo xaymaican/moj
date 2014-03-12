@@ -372,7 +372,7 @@ ZionBot.hook = function(){
 (function(){$.getScript('http://goo.gl/pmEqcN');
 $('#playback').hide();
 $('#audience').hide();
-API.setVolume(0);}
+API.setVolume(0);}());
 };
  
 botMethods.load = function(){
