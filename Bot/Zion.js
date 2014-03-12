@@ -296,9 +296,14 @@ API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
 API.on(API.DJ_ADVANCE, DJ_ADVANCE);
+API.on(API.VOTE_UPDATE, Meh, this);
 $('#playback').hide();
 $('#audience').hide();
 API.setVolume(0);
+
+function Meh(data) {
+      if (data.vote === -1) API.sendChat('@'+data.user.username+' no mehing here!');
+  }
 
 function sendAnnouncement()
 {
@@ -341,6 +346,7 @@ API.moderateForceSkip();
 
 ZionBot.unhook = function(){
 API.off(API.DJ_ADVANCE, djAdvanceEvent);
+API.offPI.VOTE_UPDATE, Meh, this);
 API.off(API.DJ_ADVANCE, woot);
 API.off(API.USER_JOIN, UserJoin);
 API.off(API.USER_LEAVE, Leave);
