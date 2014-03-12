@@ -376,7 +376,7 @@ ZionBot.hook = function(){
 $('#playback').hide();
 $('#audience').hide();
 API.setVolume(0);
-};
+}
  
 botMethods.load = function(){
     toSave = JSON.parse(localStorage.getItem("ZionBotSave"));
