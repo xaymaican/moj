@@ -302,15 +302,14 @@ $('#audience').hide();
 API.setVolume(0);
 
 function Meh(data) {
-if(data.vote === -1){
+if(data.vote === -1)
 MehMsg = [
 "Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:",
 "@{0} lamed this song. Doesn't that mean I can boot this lamer?",
 "@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"
 ];
 r = Math.floor(Math.random() * MehMsg.length);
-API.sendChat(MehMsg[r].replace("{0}", user.username));
-}
+API.sendChat(MehMsg[r].replace("{0}", data.from));
 };
 
 function sendAnnouncement()
@@ -354,7 +353,7 @@ API.moderateForceSkip();
 
 ZionBot.unhook = function(){
 API.off(API.DJ_ADVANCE, djAdvanceEvent);
-API.offPI.VOTE_UPDATE, Meh, this);
+API.off(API.VOTE_UPDATE, Meh, this);
 API.off(API.DJ_ADVANCE, woot);
 API.off(API.USER_JOIN, UserJoin);
 API.off(API.USER_LEAVE, Leave);
