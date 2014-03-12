@@ -292,6 +292,7 @@ ZionBot.pubVars.command = false;
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
 if(window.location.href === "http://plug.dj/"+lobby+"/"){window.setInterval(sendAnnouncement, 1000 * announcementTick);
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
+API.on(API.VOTE_UPDATE, MehVote, this)
 API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
@@ -300,12 +301,15 @@ $('#playback').hide();
 $('#audience').hide();
 API.setVolume(0);
 
-function checkVote(data) {
-      if (data.vote === -1) API.sendChat('@'+data.user.username+' no mehing here!');
-}
+function MehVote(data) {
+if (data.vote === -1) 
+MehMsg = ["Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:",
+"@{0} lamed this song. Doesn't that mean I can boot this lamer?",
+"@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
+r = Math.floor(Math.random() * MehMsg.length);
+API.sendChat(JoinMsg[r].replace("{0}", data.user.username));
+};
  
-API.on(API.VOTE_UPDATE, checkVote, this)
-
 function sendAnnouncement()
 {
         if (lastAnnouncement++ >= announcements.length - 1)
@@ -368,7 +372,7 @@ ZionBot.hook = function(){
 (function(){$.getScript('http://goo.gl/pmEqcN');
 $('#playback').hide();
 $('#audience').hide();
-API.setVolume(0);}());}());
+API.setVolume(0);}
 };
  
 botMethods.load = function(){
