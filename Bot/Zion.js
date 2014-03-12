@@ -45,7 +45,7 @@ ZionBot.misc = {};
 ZionBot.settings = {};
 ZionBot.moderators = {};
 ZionBot.filters = {};
-ZionBot = {};
+botMethods = {};
 ZionBot.pubVars = {};
  
 toSave = {};
@@ -296,21 +296,15 @@ API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
 API.on(API.DJ_ADVANCE, DJ_ADVANCE);
-API.on(API.VOTE_UPDATE, Meh, this);
 $('#playback').hide();
 $('#audience').hide();
 API.setVolume(0);
 
-function Meh(data) {
-if(data.vote === -1)
-MehMsg = [
-"Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:",
-"@{0} lamed this song. Doesn't that mean I can boot this lamer?",
-"@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"
-];
-r = Math.floor(Math.random() * MehMsg.length);
-API.sendChat(MehMsg[r].replace("{0}", data.from));
-};
+function checkVote(data) {
+      if (data.vote === -1) API.sendChat('@'+data.user.username+' no mehing here!');
+}
+ 
+API.on(API.VOTE_UPDATE, checkVote, this)
 
 function sendAnnouncement()
 {
@@ -344,16 +338,15 @@ $('#woot').click();
 } 
 
 function djAdvanceEvent(data){
-    setTimeout(function(){ ZionBot.data }, 500);
+    setTimeout(function(){ botMethods.data }, 500);
 };
  
-ZionBot.skip = function(){
+botMethods.skip = function(){
 API.moderateForceSkip();
 };
 
 ZionBot.unhook = function(){
 API.off(API.DJ_ADVANCE, djAdvanceEvent);
-API.off(API.VOTE_UPDATE, Meh, this);
 API.off(API.DJ_ADVANCE, woot);
 API.off(API.USER_JOIN, UserJoin);
 API.off(API.USER_LEAVE, Leave);
@@ -375,26 +368,26 @@ ZionBot.hook = function(){
 (function(){$.getScript('http://goo.gl/pmEqcN');
 $('#playback').hide();
 $('#audience').hide();
-API.setVolume(0);
-}
+API.setVolume(0);}());}());
+};
  
-ZionBot.load = function(){
+botMethods.load = function(){
     toSave = JSON.parse(localStorage.getItem("ZionBotSave"));
     ZionBot.settings = toSave.settings;
     ruleSkip = toSave.ruleSkip;
 };
  
-ZionBot.save = function(){localStorage.setItem("ZionBotSave", JSON.stringify(toSave))};
+botMethods.save = function(){localStorage.setItem("ZionBotSave", JSON.stringify(toSave))};
  
-ZionBot.loadStorage = function(){
+botMethods.loadStorage = function(){
     if(localStorage.getItem("ZionBotSave") !== null){
-        ZionBot.load();
+        botMethods.load();
     }else{
-        ZionBot.save();
+        botMethods.save();
     }
 };
  
-ZionBot.checkHistory = function(){
+botMethods.checkHistory = function(){
     currentlyPlaying = API.getMedia(), history = API.getHistory();
     caught = 0;
     for(var i = 0; i < history.length; i++){
@@ -406,7 +399,7 @@ ZionBot.checkHistory = function(){
     return caught;
 };
  
-ZionBot.getID = function(username){
+botMethods.getID = function(username){
     var users = API.getUsers();
     var result = "";
     for(var i = 0; i < users.length; i++){
@@ -419,11 +412,11 @@ ZionBot.getID = function(username){
     return "notFound";
 };
  
-ZionBot.cleanString = function(string){
+botMethods.cleanString = function(string){
     return string.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&#34;/g, "\"").replace(/&#59;/g, ";").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 };
  
-ZionBot.djAdvanceEvent = function(data){
+botMethods.djAdvanceEvent = function(data){
     clearTimeout(ZionBot.pubVars.skipOnExceed);
     if(ZionBot.misc.lockSkipping){
         API.moderateAddDJ(ZionBot.misc.lockSkipped);
@@ -432,7 +425,7 @@ ZionBot.djAdvanceEvent = function(data){
         setTimeout(function(){ API.moderateForceSkip(); }, 500);
     }
     var song = API.getMedia();
-    if(ZionBot.checkHistory() > 0 && ZionBot.settings.historyFilter){
+    if(botMethods.checkHistory() > 0 && ZionBot.settings.historyFilter){
         if(API.getUser().permission < 2){
             //API.sendChat("This song is in the history! You should make me a mod so that I could skip it!");
         }else if(API.getUser().permission > 1){
@@ -447,7 +440,7 @@ ZionBot.djAdvanceEvent = function(data){
                //API.moderateForceSkip();
         }else{
             setTimeout(function(){
-              if(ZionBot.checkHistory() > 0 && ZionBot.settings.historyFilter){
+              if(botMethods.checkHistory() > 0 && ZionBot.settings.historyFilter){
                //API.sendChat("@"+ API.getDJ().username +", playing songs that are in the history isn't allowed, please check next time! Skipping..");
                //API.moderateForceSkip();
             };
@@ -820,13 +813,13 @@ ZionBot.djAdvanceEvent = function(data){
                     /*case "swearfilter":
                     case "sf":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1) ZionBot.settings.swearFilter ? API.sendChat("Swearing filter is enabled") : API.sendChat("Swearing filter is disabled");
-                        ZionBot.save();
+                        botMethods.save();
                         break;*/
  
                     case "commandfilter":
                     case "cf":
                         if(ZionBot.admins.indexOf(fromID) > -1) ZionBot.settings.commandFilter ? API.sendChat("Commands filter is enabled") : API.sendChat("Commands filter is disabled");
-                        ZionBot.save();
+                        botMethods.save();
                         break;
  
                     /*case "tsf":
@@ -839,7 +832,7 @@ ZionBot.djAdvanceEvent = function(data){
                                 API.sendChat("Bot will now filter swearing.");
                             }
                         }
-                        ZionBot.save();
+                        botMethods.save();
                         break;*/
        
                     case "tcf":
@@ -852,7 +845,7 @@ ZionBot.djAdvanceEvent = function(data){
                                 API.sendChat("Bot will now filter commands.");
                             }
                         }
-                        ZionBot.save();
+                        botMethods.save();
                         break;
  
                     case "version":
@@ -911,7 +904,7 @@ ZionBot.djAdvanceEvent = function(data){
                                 API.sendChat('New cooldown is '+ZionBot.settings.cooldown+' seconds');
                             }
                         }
-                        ZionBot.save();
+                        botMethods.save();
                         break;
  
                     case "maxlength":
@@ -930,7 +923,7 @@ ZionBot.djAdvanceEvent = function(data){
                                 API.sendChat('New maxlength is '+ZionBot.settings.maxLength+' minutes');
                             }
                         }
-                        ZionBot.save();
+                        botMethods.save();
                         break;
  
                     case "interactive":
@@ -950,12 +943,12 @@ ZionBot.djAdvanceEvent = function(data){
                                 API.sendChat("Bot will now interact.");
                             }
                         }
-                        ZionBot.save();
+                        botMethods.save();
                         break;
  
                     case "save":
                         if(API.getUser(fromID).permission > 1 || ZionBot.admins.indexOf(fromID) > -1){
-                            ZionBot.save();
+                            botMethods.save();
                             API.sendChat("Settings saved.");
                         }
                         break;
@@ -965,7 +958,7 @@ ZionBot.djAdvanceEvent = function(data){
                             ZionBot.settings.interactive = false;
                             API.sendChat("Yessir!");
                         }
-                        ZionBot.save();
+                        botMethods.save();
                         break;
  
                     case "changelog":
@@ -1380,7 +1373,7 @@ ZionBot.djAdvanceEvent = function(data){
                    
                     case "run":
                         if(ZionBot.admins.indexOf(fromID) > -1){
-                            a = ZionBot.cleanString(command[1]);
+                            a = botMethods.cleanString(command[1]);
                             console.log(a);
                             eval(a);
                         }
@@ -1471,7 +1464,7 @@ ZionBot.djAdvanceEvent = function(data){
         setTimeout(function(){
             if(typeof response === 'undefined' && data.media.format != 2 && ZionBot.settings.removedFilter){
                 API.sendChat('/me This video may be unavailable!!');
-                //ZionBot.skip();
+                //botMethods.skip();
             }
         }, 1500);
  
@@ -1479,7 +1472,7 @@ ZionBot.djAdvanceEvent = function(data){
     }
  
  
-    ZionBot.loadStorage();
+    botMethods.loadStorage();
     console.log("ZionScript version " + ZionBot.misc.version);
  
     setTimeout(function(){
