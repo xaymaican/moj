@@ -52,7 +52,7 @@ toSave = {};
 toSave.settings = ZionBot.settings;
 toSave.moderators = ZionBot.moderators;
  
-ZionBot.misc.version = "1.0.34";
+ZionBot.misc.version = "1.0.36";
 ZionBot.misc.origin = "This bot was created by xay and Neon alone, and it is copyrighted!";
 ZionBot.misc.changelog = "Added a secondary check for history";
 ZionBot.misc.ready = true;
@@ -291,12 +291,11 @@ ZionBot.pubVars.command = false;
  
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
 if(window.location.href === "http://plug.dj/"+lobby+"/"){window.setInterval(sendAnnouncement, 1000 * announcementTick);
-API.on(API.DJ_ADVANCE, djAdvanceEvent);
+API.on(API.DJ_ADVANCE, djAdvanceEvent, NEW_DJ);
 API.on(API.VOTE_UPDATE, MehVote, function(obj)   {bot._userVote(obj);});
 API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
-API.on(API.DJ_ADVANCE, DJ_ADVANCE);
 $('#playback').hide();
 $('#audience').hide();
 API.setVolume(0);
@@ -350,12 +349,11 @@ API.moderateForceSkip();
 };
 
 ZionBot.unhook = function(){
-API.off(API.DJ_ADVANCE, djAdvanceEvent);
+API.off(API.DJ_ADVANCE, djAdvanceEvent, NEW_DJ);
 API.off(API.VOTE_UPDATE, MehVote, this);
 API.off(API.DJ_ADVANCE, woot);
 API.off(API.USER_JOIN, UserJoin);
 API.off(API.USER_LEAVE, Leave);
-API.off(API.DJ_ADVANCE, DJ_ADVANCE);
 API.off(API.USER_JOIN);
 API.off(API.USER_LEAVE);
 API.off(API.USER_SKIP);
@@ -370,7 +368,7 @@ API.setVolume(15);
 };
 
 ZionBot.hook = function(){
-(function(){$.getScript('http://goo.gl/pmEqcN');
+(function(){$.getScript('http://goo.gl/ypPhnz');
 $('#playback').hide();
 $('#audience').hide();
 API.setVolume(0);}());
@@ -1464,7 +1462,7 @@ botMethods.djAdvanceEvent = function(data){
     });
     
     
-    function DJ_ADVANCE(data){
+    function NEW_DJ(data){
         $.getJSON('http://gdata.youtube.com/feeds/api/videos/'+data.media.cid+'?v=2&alt=jsonc&callback=?', function(json){response = json.data});
         setTimeout(function(){
             if(typeof response === 'undefined' && data.media.format != 2 && ZionBot.settings.removedFilter){
