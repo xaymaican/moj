@@ -302,9 +302,7 @@ API.setVolume(0);
 
 function MehVote(data) {
 if (data.vote === -1) 
-MehMsg = ["Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:",
-"@{0} lamed this song. Doesn't that mean I can boot this lamer?",
-"@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
+MehMsg = ["Oh dear, @{0} has lamed, which is clearly not allowed. This will all end in tears. :sob:","@{0} lamed this song. Doesn't that mean I can boot this lamer?","@{0}, this song may be lamer than a Vogon poet with a speech impediment, but you're not allowed to click that Lame button. Depressing isn't it?"];
 r = Math.floor(Math.random() * MehMsg.length);
 API.sendChat(MehMsg[r].replace("{0}", data.user.username));
 }
