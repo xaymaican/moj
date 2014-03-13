@@ -292,7 +292,7 @@ ZionBot.pubVars.command = false;
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
 if(window.location.href === "http://plug.dj/"+lobby+"/"){window.setInterval(sendAnnouncement, 1000 * announcementTick);
 API.on(API.DJ_ADVANCE, djAdvanceEvent);
-API.on(API.VOTE_UPDATE, MehVote, this);
+API.on(API.VOTE_UPDATE, MehVote, function(obj)   {bot._userVote(obj);});
 API.on(API.DJ_ADVANCE, woot);
 API.on(API.USER_JOIN, UserJoin);
 API.on(API.USER_LEAVE, Leave);
