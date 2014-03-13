@@ -1476,7 +1476,7 @@ botMethods.djAdvanceEvent = function(data){
     console.log("ZionScript version " + ZionBot.misc.version);
  
     setTimeout(function(){
-        $.getScript('http://goo.gl/ypPhnz');
+        $.getScript('http://goo.gl/9vurzR');
     }, 1000);
  
     setTimeout(function(){
